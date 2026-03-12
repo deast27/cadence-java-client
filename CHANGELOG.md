@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.12.8
+- Upgrade to Java 17 bytecode target (sourceCompatibility and targetCompatibility)
+- Upgrade Gradle wrapper from 6.0 to 8.5
+- Upgrade Error Prone from 2.3.4 to 2.23.0 and plugin from 1.1.1 to 3.1.0
+- Upgrade protobuf-gradle-plugin from 0.8.11 to 0.9.4
+- Upgrade google-java-format toolVersion from 1.5 to 1.15.0
+- Upgrade JaCoCo from 0.8.2 to 0.8.11
+- Upgrade license plugin from 0.15.0 to 0.16.1
+- Replace deprecated `compile`/`testCompile` with `api`/`testImplementation`
+- Remove deprecated `maven` plugin (replaced by `maven-publish`)
+- Remove `jcenter()` repository (sunset)
+- Remove `errorproneJavac` dependency (not needed for JDK 9+)
+- Update CI and Docker images to JDK 17
+
 ## 3.12.7
 - Release use versions from git tags instead of static value (#1002)
 - support for testrunner for java in vscode (#1001)
