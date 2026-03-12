@@ -7,5 +7,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class BadBinaries {
-  private Map<String, BadBinaryInfo> binaries = new HashMap<>();;
+  private Map<String, BadBinaryInfo> binaries = new HashMap<>();
+  ;
 }

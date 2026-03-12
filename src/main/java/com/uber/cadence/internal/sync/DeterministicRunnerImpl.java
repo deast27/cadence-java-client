@@ -116,6 +116,7 @@ class DeterministicRunnerImpl implements DeterministicRunner {
    * com.uber.cadence.workflow.Workflow#sleep(long)} expires. 0 means no blocked threads.
    */
   private long nextWakeUpTime;
+
   /**
    * Used to check for failedPromises that contain an error, but never where accessed. It is to
    * avoid failure swallowing by failedPromises which is very hard to troubleshoot.

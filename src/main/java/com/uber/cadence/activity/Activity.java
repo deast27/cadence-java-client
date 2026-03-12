@@ -245,12 +245,16 @@ public final class Activity {
     return ActivityInternal.getTask().getTaskToken();
   }
 
-  /** @return workfow execution that requested the activity execution */
+  /**
+   * @return workfow execution that requested the activity execution
+   */
   public static com.uber.cadence.WorkflowExecution getWorkflowExecution() {
     return ActivityInternal.getTask().getWorkflowExecution();
   }
 
-  /** @return task that caused activity execution */
+  /**
+   * @return task that caused activity execution
+   */
   public static ActivityTask getTask() {
     return ActivityInternal.getTask();
   }

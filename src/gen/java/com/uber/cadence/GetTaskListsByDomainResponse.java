@@ -7,6 +7,8 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class GetTaskListsByDomainResponse {
-  private Map<String, DescribeTaskListResponse> decisionTaskListMap = new HashMap<>();;
-  private Map<String, DescribeTaskListResponse> activityTaskListMap = new HashMap<>();;
+  private Map<String, DescribeTaskListResponse> decisionTaskListMap = new HashMap<>();
+  ;
+  private Map<String, DescribeTaskListResponse> activityTaskListMap = new HashMap<>();
+  ;
 }
