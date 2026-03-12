@@ -182,6 +182,10 @@ processResources {
     dependsOn 'extractProto'
 }
 
+processTestResources {
+    dependsOn 'extractTestProto'
+}
+
 compileJava {
     dependsOn 'googleJavaFormat'
     options.encoding = 'UTF-8'
