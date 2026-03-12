@@ -6,7 +6,8 @@ FROM eclipse-temurin:17-jdk-alpine
 # Install dependencies using apk
 RUN apk update && apk add --virtual wget ca-certificates wget
 # Git is needed in order to update the dls submodule
-RUN apk add git libstdc++ bash curl
+# libc6-compat is needed for protoc (glibc binary) to run on musl-based Alpine
+RUN apk add git libstdc++ bash curl libc6-compat
 
 RUN git config --global --add safe.directory /cadence-java-client
 
