@@ -23,7 +23,9 @@ interface DecisionStateMachine {
 
   com.uber.cadence.Decision getDecision();
 
-  /** @return true if produced a decision */
+  /**
+   * @return true if produced a decision
+   */
   boolean cancel(Runnable immediateCancellationCallback);
 
   void handleStartedEvent(HistoryEvent event);

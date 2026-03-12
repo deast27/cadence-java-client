@@ -8,5 +8,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class VersionHistories {
   private int currentVersionHistoryIndex;
-  private List<VersionHistory> histories = new ArrayList<>();;
+  private List<VersionHistory> histories = new ArrayList<>();
+  ;
 }
