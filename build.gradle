@@ -7,7 +7,7 @@ buildscript {
 plugins {
     id "com.github.hierynomus.license" version "0.15.0"
     id 'com.github.sherter.google-java-format' version '0.9'
-    id 'net.ltgt.errorprone' version  '1.1.1'
+    id 'net.ltgt.errorprone' version  '3.1.0'
     id 'java-library'
     id 'jacoco'
     id 'com.google.protobuf' version '0.8.11'
@@ -65,13 +65,12 @@ def getVersion() {
 description = '''Uber Cadence Java Client'''
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
-    errorproneJavac('com.google.errorprone:javac:9+181-r4173-1')
-    errorprone('com.google.errorprone:error_prone_core:2.3.4')
+    errorprone('com.google.errorprone:error_prone_core:2.23.0')
 
     compile group: 'io.opentracing', name: 'opentracing-api', version: '0.33.0'
     compile group: 'io.opentracing', name: 'opentracing-util', version: '0.33.0'
@@ -181,10 +180,11 @@ clean {
     delete protobuf.generatedFilesBaseDir
 }
 
-compileJava {
-    dependsOn 'googleJavaFormat'
-    options.encoding = 'UTF-8'
-    options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += [
+        '--add-exports', 'java.base/sun.nio.ch=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+    ]
     options.errorprone.excludedPaths = '.*/generated-sources/.*'
     options.errorprone {
         disable('BadImport')
@@ -195,17 +195,23 @@ compileJava {
     }
 }
 
+compileJava {
+    dependsOn 'googleJavaFormat'
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
+}
+
 compileTestJava {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
-    options.errorprone.excludedPaths = '.*/generated-sources/.*'
-    options.errorprone {
-        disable('BadImport')
-        disable('PreferJavaTimeOverload')
-        disable('JavaTimeDefaultTimeZone')
-        disable('MutableConstantField')
-        disable('CatchFail')
-    }
+}
+
+tasks.withType(Test).configureEach {
+    jvmArgs += [
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED',
+    ]
 }
 
 // Generation version.properties for value to be included into the request header
