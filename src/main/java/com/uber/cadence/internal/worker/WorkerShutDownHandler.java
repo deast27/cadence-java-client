@@ -65,6 +65,7 @@ public class WorkerShutDownHandler {
   }
 
   // Only for tests
+  @SuppressWarnings("DoNotCall") // Intentionally calling run() to execute handler synchronously
   protected static void execute() {
     registeredHandler.run();
   }
