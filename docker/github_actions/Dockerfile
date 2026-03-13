@@ -8,5 +8,9 @@ RUN apk update && apk add --virtual wget ca-certificates wget
 # Git is needed in order to update the dls submodule
 RUN apk add git libstdc++ bash curl
 
+# Mark the workspace as safe for Git (needed for newer Git versions with
+# volume-mounted repos where the container user differs from the host user)
+RUN git config --global --add safe.directory /cadence-java-client
+
 RUN mkdir /cadence-java-client
 WORKDIR /cadence-java-client
