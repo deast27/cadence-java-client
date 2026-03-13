@@ -6,7 +6,8 @@ FROM eclipse-temurin:17-jdk-alpine
 # Install dependencies using apk
 RUN apk update && apk add --virtual wget ca-certificates wget
 # Git is needed in order to update the dls submodule
-RUN apk add git libstdc++ bash curl
+# gcompat provides glibc compatibility for pre-built binaries (e.g. protoc)
+RUN apk add git libstdc++ bash curl gcompat
 
 # Mark the workspace as safe for Git (needed for newer Git versions with
 # volume-mounted repos where the container user differs from the host user)
