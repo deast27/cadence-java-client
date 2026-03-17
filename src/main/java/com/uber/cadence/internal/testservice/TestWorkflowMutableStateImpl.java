@@ -141,14 +141,18 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   }
 
   private void update(UpdateProcedure updater)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
     update(false, updater, stackTraceElements[2].getMethodName());
   }
 
   private void completeDecisionUpdate(UpdateProcedure updater, StickyExecutionAttributes attributes)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
     stickyExecutionAttributes = attributes;
@@ -156,7 +160,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   }
 
   private void update(boolean completeDecisionUpdate, UpdateProcedure updater, String caller)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     String callerInfo = "Decision Update from " + caller;
     lock.lock();
@@ -243,7 +249,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void startDecisionTask(
       PollForDecisionTaskResponse task, PollForDecisionTaskRequest pollRequest)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     if (task.getQuery() == null) {
       update(
@@ -260,7 +268,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void completeDecisionTask(int historySize, RespondDecisionTaskCompletedRequest request)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     List<Decision> decisions = request.getDecisions();
     completeDecisionUpdate(
@@ -563,7 +573,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void completeSignalExternalWorkflowExecution(String signalId, String runId)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -577,7 +589,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void failSignalExternalWorkflowExecution(
       String signalId, SignalExternalWorkflowExecutionFailedCause cause)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -599,7 +613,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   // TODO: insert a single decision failure into the history
   @Override
   public void failDecisionTask(RespondDecisionTaskFailedRequest request)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     completeDecisionUpdate(
         ctx -> {
@@ -634,7 +650,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void childWorkflowStarted(ChildWorkflowExecutionStartedEventAttributes a)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -649,7 +667,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void childWorkflowFailed(String activityId, ChildWorkflowExecutionFailedEventAttributes a)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -664,7 +684,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void childWorkflowTimedOut(
       String activityId, ChildWorkflowExecutionTimedOutEventAttributes a)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -679,7 +701,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void failStartChildWorkflow(
       String childId, StartChildWorkflowExecutionFailedEventAttributes a)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -694,7 +718,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void childWorkflowCompleted(
       String activityId, ChildWorkflowExecutionCompletedEventAttributes a)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -709,7 +735,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void childWorkflowCanceled(
       String activityId, ChildWorkflowExecutionCanceledEventAttributes a)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1081,7 +1109,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void startActivityTask(
       PollForActivityTaskResponse task, PollForActivityTaskRequest pollRequest)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1135,7 +1165,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void completeActivityTask(String activityId, RespondActivityTaskCompletedRequest request)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1150,7 +1182,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void completeActivityTaskById(
       String activityId, RespondActivityTaskCompletedByIDRequest request)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1164,7 +1198,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void failActivityTask(String activityId, RespondActivityTaskFailedRequest request)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1216,7 +1252,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void failActivityTaskById(String activityId, RespondActivityTaskFailedByIDRequest request)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1234,7 +1272,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void cancelActivityTask(String activityId, RespondActivityTaskCanceledRequest request)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1249,7 +1289,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
   @Override
   public void cancelActivityTaskById(
       String activityId, RespondActivityTaskCanceledByIDRequest request)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1385,7 +1427,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void signal(SignalWorkflowExecutionRequest signalRequest)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1396,7 +1440,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void signalFromWorkflow(SignalExternalWorkflowExecutionDecisionAttributes a)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
@@ -1407,7 +1453,9 @@ class TestWorkflowMutableStateImpl implements TestWorkflowMutableState {
 
   @Override
   public void requestCancelWorkflowExecution(RequestCancelWorkflowExecutionRequest cancelRequest)
-      throws EntityNotExistsError, InternalServiceError, WorkflowExecutionAlreadyCompletedError,
+      throws EntityNotExistsError,
+          InternalServiceError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     update(
         ctx -> {
