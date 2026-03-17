@@ -40,7 +40,7 @@ interface WorkflowThread extends CancellationScope {
    */
   static void await(String reason, Supplier<Boolean> unblockCondition)
       throws DestroyWorkflowThreadError {
-    currentThreadInternal().yield(reason, unblockCondition);
+    currentThreadInternal().yieldExecution(reason, unblockCondition);
   }
 
   /**
@@ -50,7 +50,7 @@ interface WorkflowThread extends CancellationScope {
    */
   static boolean await(long timeoutMillis, String reason, Supplier<Boolean> unblockCondition)
       throws DestroyWorkflowThreadError {
-    return currentThreadInternal().yield(timeoutMillis, reason, unblockCondition);
+    return currentThreadInternal().yieldExecution(timeoutMillis, reason, unblockCondition);
   }
 
   /**
@@ -94,9 +94,10 @@ interface WorkflowThread extends CancellationScope {
 
   void addStackTrace(StringBuilder result);
 
-  void yield(String reason, Supplier<Boolean> unblockCondition) throws DestroyWorkflowThreadError;
+  void yieldExecution(String reason, Supplier<Boolean> unblockCondition)
+      throws DestroyWorkflowThreadError;
 
-  boolean yield(long timeoutMillis, String reason, Supplier<Boolean> unblockCondition)
+  boolean yieldExecution(long timeoutMillis, String reason, Supplier<Boolean> unblockCondition)
       throws DestroyWorkflowThreadError;
 
   /**

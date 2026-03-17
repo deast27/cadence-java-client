@@ -84,7 +84,9 @@ interface DeterministicRunner {
   /** IsDone returns true when all of threads are completed */
   boolean isDone();
 
-  /** @return exit value passed to {@link WorkflowThread#exit(Object)} */
+  /**
+   * @return exit value passed to {@link WorkflowThread#exit(Object)}
+   */
   Object getExitValue();
 
   /**
@@ -102,7 +104,9 @@ interface DeterministicRunner {
   /** Stack trace of all threads owned by the DeterministicRunner instance */
   String stackTrace();
 
-  /** @return time according to a clock configured with the Runner. */
+  /**
+   * @return time according to a clock configured with the Runner.
+   */
   long currentTimeMillis();
 
   /**

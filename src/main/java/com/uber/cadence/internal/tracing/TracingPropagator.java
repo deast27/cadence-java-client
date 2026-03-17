@@ -144,9 +144,7 @@ public class TracingPropagator {
     return tracer.extract(
         Format.Builtin.TEXT_MAP,
         new TextMapAdapter(
-            headers
-                .entrySet()
-                .stream()
+            headers.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> new String(e.getValue())))));
   }
 
@@ -155,10 +153,7 @@ public class TracingPropagator {
     return tracer.extract(
         Format.Builtin.TEXT_MAP,
         new TextMapAdapter(
-            header
-                .getFields()
-                .entrySet()
-                .stream()
+            header.getFields().entrySet().stream()
                 .collect(
                     Collectors.toMap(
                         Map.Entry::getKey,

@@ -64,9 +64,14 @@ public class MigrationIWorkflowService extends IWorkflowServiceBase {
   @Override
   public StartWorkflowExecutionAsyncResponse StartWorkflowExecutionAsync(
       StartWorkflowExecutionAsyncRequest startRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
 
     if (shouldStartInNew(startRequest.getRequest().getWorkflowId())) {
       return serviceNew.StartWorkflowExecutionAsync(startRequest);
@@ -93,9 +98,14 @@ public class MigrationIWorkflowService extends IWorkflowServiceBase {
   @Override
   public SignalWithStartWorkflowExecutionAsyncResponse SignalWithStartWorkflowExecutionAsync(
       SignalWithStartWorkflowExecutionAsyncRequest signalWithStartRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     if (shouldStartInNew(signalWithStartRequest.getRequest().getWorkflowId())) {
       return serviceNew.SignalWithStartWorkflowExecutionAsync(signalWithStartRequest);
     }
@@ -119,8 +129,13 @@ public class MigrationIWorkflowService extends IWorkflowServiceBase {
   @Override
   public RestartWorkflowExecutionResponse RestartWorkflowExecution(
       RestartWorkflowExecutionRequest restartRequest)
-      throws BadRequestError, ServiceBusyError, DomainNotActiveError, LimitExceededError,
-          EntityNotExistsError, ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     if (shouldStartInNew(restartRequest.getWorkflowExecution().getWorkflowId())) {
       return serviceNew.RestartWorkflowExecution(restartRequest);
     }
