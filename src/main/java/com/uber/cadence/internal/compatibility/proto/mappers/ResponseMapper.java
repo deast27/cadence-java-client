@@ -503,17 +503,11 @@ public class ResponseMapper {
         new com.uber.cadence.GetTaskListsByDomainResponse();
 
     res.setActivityTaskListMap(
-        taskListsByDomain
-            .getActivityTaskListMapMap()
-            .entrySet()
-            .stream()
+        taskListsByDomain.getActivityTaskListMapMap().entrySet().stream()
             .collect(
                 Collectors.toMap(Map.Entry::getKey, e -> describeTaskListResponse(e.getValue()))));
     res.setDecisionTaskListMap(
-        taskListsByDomain
-            .getDecisionTaskListMapMap()
-            .entrySet()
-            .stream()
+        taskListsByDomain.getDecisionTaskListMapMap().entrySet().stream()
             .collect(
                 Collectors.toMap(Map.Entry::getKey, e -> describeTaskListResponse(e.getValue()))));
     return res;
