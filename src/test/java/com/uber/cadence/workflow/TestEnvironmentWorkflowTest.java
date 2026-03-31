@@ -41,10 +41,9 @@ public class TestEnvironmentWorkflowTest {
 
   public interface CronW {
     @WorkflowMethod(
-      executionStartToCloseTimeoutSeconds = 10,
-      workflowId = CRON_WORKFLOW_ID,
-      taskList = TASK_LIST
-    )
+        executionStartToCloseTimeoutSeconds = 10,
+        workflowId = CRON_WORKFLOW_ID,
+        taskList = TASK_LIST)
     @CronSchedule("* * * * *")
     void cron();
   }
