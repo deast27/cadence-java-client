@@ -8,11 +8,11 @@ Join our community on the CNCF Slack workspace at [cloud-native.slack.com](https
 
 ## Development Environment
 
-* Java 11 (currently, we use Java 11 to compile Java 8 code).
+* Java 17 (currently, we use Java 17 to compile Java 17 code).
 * Gradle build tool [6.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
 * Docker
 
-:warning: Note 1: It's currently compatible with Java 8 compiler but no guarantee in the future.
+:warning: Note 1: The project requires Java 17 or later.
 
 ## IntelliJ IDE integration (Optional)
 
