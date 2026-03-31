@@ -65,8 +65,8 @@ def getVersion() {
 description = '''Uber Cadence Java Client'''
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
@@ -227,11 +227,9 @@ classes {
     dependsOn createProperties
 }
 
-if (JavaVersion.current().isJava8Compatible()) {
-    allprojects {
-        tasks.withType(Javadoc) {
-            options.addStringOption('Xdoclint:none', '-quiet')
-        }
+allprojects {
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
     }
 }
 
@@ -344,6 +342,12 @@ test {
     dependsOn 'registerDomain'
     dependsOn 'licenseMain'
     finalizedBy jacocoTestReport // report is always generated after tests run
+    jvmArgs += [
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.io=ALL-UNNAMED',
+    ]
     testLogging {
         events 'passed', 'skipped', 'failed'
         exceptionFormat 'full'
