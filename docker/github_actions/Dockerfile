@@ -10,3 +10,6 @@ RUN apk add git libstdc++ bash curl
 
 RUN mkdir /cadence-java-client
 WORKDIR /cadence-java-client
+
+# Fix git "dubious ownership" error when repo is mounted as a volume
+RUN git config --global --add safe.directory /cadence-java-client
