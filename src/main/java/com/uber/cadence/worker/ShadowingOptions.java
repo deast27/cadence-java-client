@@ -98,6 +98,7 @@ public final class ShadowingOptions {
       this.workflowTypes = Sets.newHashSet(workflowTypes);
       return this;
     }
+
     /**
      * Optional: The workflow start time filter is to filter the shadowed workflows by workflow
      * start time.
@@ -161,7 +162,8 @@ public final class ShadowingOptions {
               || workflowStatuses.size() != 1
               || !workflowStatuses.contains(WorkflowStatus.OPEN))) {
         throw new IllegalArgumentException(
-            "workflow types, status and start time filter can't be specified when workflow query is specified");
+            "workflow types, status and start time filter can't be specified when workflow query is"
+                + " specified");
       }
       if (workflowQuery.isEmpty()) {
         workflowQuery =

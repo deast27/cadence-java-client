@@ -167,7 +167,8 @@ public class ReplayDeciderCacheTests {
     }
 
     fail(
-        "Expected replayDeciderCache.getOrCreate to throw IllegalArgumentException but no exception was thrown");
+        "Expected replayDeciderCache.getOrCreate to throw IllegalArgumentException but no exception"
+            + " was thrown");
   }
 
   @Test

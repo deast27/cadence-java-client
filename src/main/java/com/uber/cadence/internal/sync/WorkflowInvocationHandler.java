@@ -246,7 +246,8 @@ class WorkflowInvocationHandler implements InvocationHandler, Supplier<WorkflowS
       WorkflowMethod workflowMethod = method.getAnnotation(WorkflowMethod.class);
       if (workflowMethod == null) {
         throw new IllegalArgumentException(
-            "WorkflowClient.enqueueStart can be called only on a method annotated with @WorkflowMethod");
+            "WorkflowClient.enqueueStart can be called only on a method annotated with"
+                + " @WorkflowMethod");
       }
       result = untyped.enqueueStart(args);
     }

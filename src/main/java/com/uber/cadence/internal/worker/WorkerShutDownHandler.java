@@ -64,7 +64,8 @@ public class WorkerShutDownHandler {
     }
   }
 
-  // Only for tests
+  // Only for tests — intentionally calls run() to execute on the current thread
+  @SuppressWarnings("DoNotCall")
   protected static void execute() {
     registeredHandler.run();
   }

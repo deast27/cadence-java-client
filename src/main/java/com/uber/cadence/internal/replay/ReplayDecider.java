@@ -386,9 +386,7 @@ class ReplayDecider implements Decider {
       return null;
     }
 
-    return queries
-        .entrySet()
-        .stream()
+    return queries.entrySet().stream()
         .collect(Collectors.toMap(Map.Entry::getKey, q -> queryWorkflow(q.getValue())));
   }
 
@@ -427,7 +425,8 @@ class ReplayDecider implements Decider {
               && decisionTask.getHistory().getEvents().size() > 0)) {
         throw new IllegalStateException(
             String.format(
-                "ReplayDecider expects next event id at %d. History's previous started event id is %d",
+                "ReplayDecider expects next event id at %d. History's previous started event id is"
+                    + " %d",
                 decisionsHelper.getNextDecisionEventId(),
                 historyHelper.getPreviousStartedEventId()));
       }
@@ -662,8 +661,8 @@ class ReplayDecider implements Decider {
           Duration decisionTaskRemainingTime = decisionTaskRemainingTime();
           if (decisionTaskRemainingTime.isNegative() || decisionTaskRemainingTime.isZero()) {
             throw new Error(
-                "Decision task timed out while querying history. If this happens consistently please consider "
-                    + "increase decision task timeout or reduce history size.");
+                "Decision task timed out while querying history. If this happens consistently"
+                    + " please consider increase decision task timeout or reduce history size.");
           }
 
           metricsScope.counter(MetricsType.WORKFLOW_GET_HISTORY_COUNTER).inc(1);
@@ -696,7 +695,8 @@ class ReplayDecider implements Decider {
           }
           if (!current.hasNext()) {
             log.error(
-                "GetWorkflowExecutionHistory returns an empty history, maybe a bug in server, workflowID:{}, runID:{}, domain:{} token:{}",
+                "GetWorkflowExecutionHistory returns an empty history, maybe a bug in server,"
+                    + " workflowID:{}, runID:{}, domain:{} token:{}",
                 request.getExecution().getWorkflowId(),
                 request.getExecution().getRunId(),
                 request.getDomain(),
