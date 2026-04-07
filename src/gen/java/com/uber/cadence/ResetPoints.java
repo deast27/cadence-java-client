@@ -7,5 +7,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ResetPoints {
-  private List<ResetPointInfo> points = new ArrayList<>();;
+  private List<ResetPointInfo> points = new ArrayList<>();
+  ;
 }

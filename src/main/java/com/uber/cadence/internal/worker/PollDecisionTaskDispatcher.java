@@ -69,7 +69,8 @@ public final class PollDecisionTaskDispatcher
       request.setCause(DecisionTaskFailedCause.RESET_STICKY_TASKLIST);
       String message =
           String.format(
-              "No handler is subscribed for the PollForDecisionTaskResponse.WorkflowExecutionTaskList %s",
+              "No handler is subscribed for the"
+                  + " PollForDecisionTaskResponse.WorkflowExecutionTaskList %s",
               taskListName);
       request.setDetails(message.getBytes(Charset.defaultCharset()));
       log.warn(message);

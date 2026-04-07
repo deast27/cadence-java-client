@@ -98,7 +98,10 @@ public class PollerOptionsTest {
   public void testToString() {
     PollerOptions options = PollerOptions.getDefaultInstance();
     assertEquals(
-        "PollerOptions{maximumPollRateIntervalMilliseconds=1000, maximumPollRatePerSecond=0.0, pollBackoffCoefficient=2.0, pollBackoffInitialInterval=PT0.1S, pollBackoffMaximumInterval=PT1M, pollThreadCount=1, pollThreadNamePrefix='null, pollOnlyIfExecutorHasCapacity='false, pollerAutoScalerOptions='null'}",
+        "PollerOptions{maximumPollRateIntervalMilliseconds=1000, maximumPollRatePerSecond=0.0,"
+            + " pollBackoffCoefficient=2.0, pollBackoffInitialInterval=PT0.1S,"
+            + " pollBackoffMaximumInterval=PT1M, pollThreadCount=1, pollThreadNamePrefix='null,"
+            + " pollOnlyIfExecutorHasCapacity='false, pollerAutoScalerOptions='null'}",
         options.toString());
   }
 }

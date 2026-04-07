@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 public class RespondCrossClusterTasksCompletedRequest {
   private int shardID;
   private String targetCluster;
-  private List<CrossClusterTaskResponse> taskResponses = new ArrayList<>();;
+  private List<CrossClusterTaskResponse> taskResponses = new ArrayList<>();
+  ;
   private boolean fetchNewTasks;
 }

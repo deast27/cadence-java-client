@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ListOpenWorkflowExecutionsResponse {
-  private List<WorkflowExecutionInfo> executions = new ArrayList<>();;
+  private List<WorkflowExecutionInfo> executions = new ArrayList<>();
+  ;
   private byte[] nextPageToken;
 }

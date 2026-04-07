@@ -100,7 +100,8 @@ public class PollerAutoScalerOptionsTest {
     PollerAutoScalerOptions options = PollerAutoScalerOptions.Builder.newBuilder().build();
 
     assertEquals(
-        "PollerAutoScalerOptions{pollerScalingInterval=PT1M, minConcurrentPollers=1, targetPollerUtilisation=0.6}",
+        "PollerAutoScalerOptions{pollerScalingInterval=PT1M, minConcurrentPollers=1,"
+            + " targetPollerUtilisation=0.6}",
         options.toString());
   }
 }

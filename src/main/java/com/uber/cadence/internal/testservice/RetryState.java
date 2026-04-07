@@ -124,7 +124,8 @@ final class RetryState {
     }
     if (policy.getMaximumAttempts() == 0 && policy.getExpirationIntervalInSeconds() == 0) {
       throw new BadRequestError(
-          "MaximumAttempts and ExpirationIntervalInSeconds are both 0. At least one of them must be specified.");
+          "MaximumAttempts and ExpirationIntervalInSeconds are both 0. At least one of them must be"
+              + " specified.");
     }
     return policy;
   }

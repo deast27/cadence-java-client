@@ -7,5 +7,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class CrossClusterApplyParentClosePolicyResponseAttributes {
-  private List<ApplyParentClosePolicyResult> childrenStatus = new ArrayList<>();;
+  private List<ApplyParentClosePolicyResult> childrenStatus = new ArrayList<>();
+  ;
 }

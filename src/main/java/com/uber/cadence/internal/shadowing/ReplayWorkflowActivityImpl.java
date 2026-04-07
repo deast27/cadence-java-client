@@ -185,7 +185,8 @@ public final class ReplayWorkflowActivityImpl implements ReplayWorkflowActivity 
       // TODO support raw history feature once server removes default Thrift encoding
       if (resp.getRawHistory() != null && resp.getRawHistory().size() > 0) {
         throw new UnsupportedOperationException(
-            "Raw history is not supported. Please turn off frontend.sendRawWorkflowHistory feature flag in frontend service to recover");
+            "Raw history is not supported. Please turn off frontend.sendRawWorkflowHistory feature"
+                + " flag in frontend service to recover");
       } else {
         histories.addAll(resp.getHistory().getEvents());
       }

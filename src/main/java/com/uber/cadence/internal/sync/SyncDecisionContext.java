@@ -431,7 +431,9 @@ final class SyncDecisionContext implements WorkflowInterceptor {
     return executeChildWorkflowOnce(name, options, input, executionResult);
   }
 
-  /** @param executionResult promise that is set bu this method when child workflow is started. */
+  /**
+   * @param executionResult promise that is set bu this method when child workflow is started.
+   */
   private Promise<byte[]> executeChildWorkflowOnce(
       String name,
       ChildWorkflowOptions options,
@@ -604,7 +606,8 @@ final class SyncDecisionContext implements WorkflowInterceptor {
       throw new IllegalArgumentException(
           "No value found for mutableSideEffectId="
               + id
-              + ", during replay it usually indicates a different workflow runId than the original one");
+              + ", during replay it usually indicates a different workflow runId than the original"
+              + " one");
     }
     byte[] binaryResult = optionalBytes.get();
     // An optimization that avoids unnecessary deserialization of the result.

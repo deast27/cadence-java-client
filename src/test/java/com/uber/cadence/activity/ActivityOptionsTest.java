@@ -87,20 +87,18 @@ public class ActivityOptionsTest {
   }
 
   @MethodRetry(
-    initialIntervalSeconds = 12,
-    backoffCoefficient = 1.97,
-    expirationSeconds = 1231423,
-    maximumAttempts = 234567,
-    maximumIntervalSeconds = 22,
-    doNotRetry = {NullPointerException.class, UnsupportedOperationException.class}
-  )
+      initialIntervalSeconds = 12,
+      backoffCoefficient = 1.97,
+      expirationSeconds = 1231423,
+      maximumAttempts = 234567,
+      maximumIntervalSeconds = 22,
+      doNotRetry = {NullPointerException.class, UnsupportedOperationException.class})
   @ActivityMethod(
-    startToCloseTimeoutSeconds = 1135,
-    taskList = "bar",
-    heartbeatTimeoutSeconds = 4567,
-    scheduleToCloseTimeoutSeconds = 2342,
-    scheduleToStartTimeoutSeconds = 9879
-  )
+      startToCloseTimeoutSeconds = 1135,
+      taskList = "bar",
+      heartbeatTimeoutSeconds = 4567,
+      scheduleToCloseTimeoutSeconds = 2342,
+      scheduleToStartTimeoutSeconds = 9879)
   public void activityAndRetryOptions() {}
 
   @Test

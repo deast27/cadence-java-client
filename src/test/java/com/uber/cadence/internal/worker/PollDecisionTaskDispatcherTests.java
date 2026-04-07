@@ -137,7 +137,8 @@ public class PollDecisionTaskDispatcherTests {
     assertEquals(Level.WARN, event.getLevel());
     assertEquals(
         String.format(
-            "No handler is subscribed for the PollForDecisionTaskResponse.WorkflowExecutionTaskList %s",
+            "No handler is subscribed for the PollForDecisionTaskResponse.WorkflowExecutionTaskList"
+                + " %s",
             "I Don't Exist TaskList"),
         event.getFormattedMessage());
   }

@@ -152,7 +152,8 @@ public class ReplayWorkflowActivityTest {
       WorkflowExecutionHistory result = activity.getFullHistory(domain, execution);
     } catch (Exception e) {
       assertEquals(
-          "Raw history is not supported. Please turn off frontend.sendRawWorkflowHistory feature flag in frontend service to recover",
+          "Raw history is not supported. Please turn off frontend.sendRawWorkflowHistory feature"
+              + " flag in frontend service to recover",
           e.getMessage());
       return;
     }
