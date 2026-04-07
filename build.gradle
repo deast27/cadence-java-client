@@ -38,6 +38,7 @@ googleJavaFormat {
     toolVersion '1.17.0'
     include '**/*.java'
     exclude '**/generated-sources/*'
+    exclude '**/gen/**'
 }
 
 tasks.googleJavaFormat.dependsOn 'licenseFormat'
@@ -179,7 +180,6 @@ clean {
 }
 
 compileJava {
-    dependsOn 'googleJavaFormat'
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
     options.errorprone.excludedPaths = '.*/generated-sources/.*'
