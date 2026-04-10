@@ -65,8 +65,8 @@ def getVersion() {
 description = '''Uber Cadence Java Client'''
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
@@ -227,7 +227,7 @@ classes {
     dependsOn createProperties
 }
 
-if (JavaVersion.current().isJava8Compatible()) {
+if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     allprojects {
         tasks.withType(Javadoc) {
             options.addStringOption('Xdoclint:none', '-quiet')
