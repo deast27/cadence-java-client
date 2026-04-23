@@ -35,6 +35,7 @@ public class ExecuteActivityParameters implements Cloneable {
   private String taskList;
   private RetryParameters retryParameters;
   private Map<String, byte[]> context;
+
   //    private int taskPriority;
 
   public ExecuteActivityParameters() {}
