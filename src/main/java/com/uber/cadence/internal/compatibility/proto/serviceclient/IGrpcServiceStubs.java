@@ -41,34 +41,54 @@ public interface IGrpcServiceStubs {
 
   ClientOptions getOptions();
 
-  /** @return Blocking (synchronous) stub to domain service. */
+  /**
+   * @return Blocking (synchronous) stub to domain service.
+   */
   DomainAPIGrpc.DomainAPIBlockingStub domainBlockingStub();
 
-  /** @return Future (asynchronous) stub to domain service. */
+  /**
+   * @return Future (asynchronous) stub to domain service.
+   */
   DomainAPIGrpc.DomainAPIFutureStub domainFutureStub();
 
-  /** @return Blocking (synchronous) stub to visibility service. */
+  /**
+   * @return Blocking (synchronous) stub to visibility service.
+   */
   VisibilityAPIGrpc.VisibilityAPIBlockingStub visibilityBlockingStub();
 
-  /** @return Future (asynchronous) stub to visibility service. */
+  /**
+   * @return Future (asynchronous) stub to visibility service.
+   */
   VisibilityAPIGrpc.VisibilityAPIFutureStub visibilityFutureStub();
 
-  /** @return Blocking (synchronous) stub to worker service. */
+  /**
+   * @return Blocking (synchronous) stub to worker service.
+   */
   WorkerAPIGrpc.WorkerAPIBlockingStub workerBlockingStub();
 
-  /** @return Future (asynchronous) stub to worker service. */
+  /**
+   * @return Future (asynchronous) stub to worker service.
+   */
   WorkerAPIGrpc.WorkerAPIFutureStub workerFutureStub();
 
-  /** @return Blocking (synchronous) stub to workflow service. */
+  /**
+   * @return Blocking (synchronous) stub to workflow service.
+   */
   WorkflowAPIGrpc.WorkflowAPIBlockingStub workflowBlockingStub();
 
-  /** @return Future (asynchronous) stub to workflow service. */
+  /**
+   * @return Future (asynchronous) stub to workflow service.
+   */
   WorkflowAPIGrpc.WorkflowAPIFutureStub workflowFutureStub();
 
-  /** @return Blocking (synchronous) stub to meta service. */
+  /**
+   * @return Blocking (synchronous) stub to meta service.
+   */
   MetaAPIFutureStub metaFutureStub();
 
-  /** @return Future (asynchronous) stub to meta service. */
+  /**
+   * @return Future (asynchronous) stub to meta service.
+   */
   MetaAPIBlockingStub metaBlockingStub();
 
   void shutdown();

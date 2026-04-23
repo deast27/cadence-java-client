@@ -196,13 +196,19 @@ public interface DecisionContext extends ReplayAware {
 
   Random newRandom();
 
-  /** @return scope to be used for metrics reporting. */
+  /**
+   * @return scope to be used for metrics reporting.
+   */
   Scope getMetricsScope();
 
-  /** @return whether we do logging during decision replay. */
+  /**
+   * @return whether we do logging during decision replay.
+   */
   boolean getEnableLoggingInReplay();
 
-  /** @return replay safe UUID */
+  /**
+   * @return replay safe UUID
+   */
   UUID randomUUID();
 
   void upsertSearchAttributes(SearchAttributes searchAttributes);
