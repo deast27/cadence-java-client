@@ -211,14 +211,20 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public DiagnoseWorkflowExecutionResponse DiagnoseWorkflowExecution(
       DiagnoseWorkflowExecutionRequest diagnoseRequest)
-      throws DomainNotActiveError, ServiceBusyError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws DomainNotActiveError,
+          ServiceBusyError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("DiagnoseWorkflowExecution is not implemented");
   }
 
   @Override
   public ListDomainsResponse ListDomains(ListDomainsRequest listRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
           CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
@@ -238,15 +244,24 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public RestartWorkflowExecutionResponse RestartWorkflowExecution(
       RestartWorkflowExecutionRequest restartRequest)
-      throws BadRequestError, ServiceBusyError, DomainNotActiveError, LimitExceededError,
-          EntityNotExistsError, ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
   @Override
   public GetTaskListsByDomainResponse GetTaskListsByDomain(GetTaskListsByDomainRequest request)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
@@ -260,9 +275,14 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public StartWorkflowExecutionAsyncResponse StartWorkflowExecutionAsync(
       StartWorkflowExecutionAsyncRequest startRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     // Just run it
     StartWorkflowExecution(startRequest.getRequest());
     return new StartWorkflowExecutionAsyncResponse();
@@ -372,7 +392,10 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public GetWorkflowExecutionHistoryResponse GetWorkflowExecutionHistory(
       GetWorkflowExecutionHistoryRequest getRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
           CadenceError {
     ExecutionId executionId = new ExecutionId(getRequest.getDomain(), getRequest.getExecution());
     TestWorkflowMutableState mutableState = getMutableState(executionId);
@@ -383,7 +406,10 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public GetWorkflowExecutionHistoryResponse GetWorkflowExecutionHistoryWithTimeout(
       GetWorkflowExecutionHistoryRequest getRequest, Long timeoutInMillis)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
           CadenceError {
 
     return GetWorkflowExecutionHistory(getRequest);
@@ -471,8 +497,13 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public RecordActivityTaskHeartbeatResponse RecordActivityTaskHeartbeatByID(
       RecordActivityTaskHeartbeatByIDRequest heartbeatRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, DomainNotActiveError,
-          LimitExceededError, ServiceBusyError, CadenceError {
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          CadenceError {
     ExecutionId execution =
         new ExecutionId(
             heartbeatRequest.getDomain(),
@@ -569,8 +600,13 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public StartWorkflowExecutionResponse SignalWithStartWorkflowExecution(
       SignalWithStartWorkflowExecutionRequest r)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, WorkflowExecutionAlreadyStartedError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          WorkflowExecutionAlreadyStartedError,
           CadenceError {
     ExecutionId executionId = new ExecutionId(r.getDomain(), r.getWorkflowId(), null);
     TestWorkflowMutableState mutableState = getMutableState(executionId, false);
@@ -609,9 +645,14 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public SignalWithStartWorkflowExecutionAsyncResponse SignalWithStartWorkflowExecutionAsync(
       SignalWithStartWorkflowExecutionAsyncRequest signalWithStartRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     SignalWithStartWorkflowExecution(signalWithStartRequest.getRequest());
     return new SignalWithStartWorkflowExecutionAsyncResponse();
   }
@@ -620,8 +661,14 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public ResetWorkflowExecutionResponse ResetWorkflowExecution(
       ResetWorkflowExecutionRequest resetRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     return null;
   }
 
@@ -629,7 +676,9 @@ public final class TestWorkflowService implements IWorkflowService {
       String signalId,
       SignalExternalWorkflowExecutionDecisionAttributes a,
       TestWorkflowMutableState source)
-      throws InternalServiceError, EntityNotExistsError, WorkflowExecutionAlreadyCompletedError,
+      throws InternalServiceError,
+          EntityNotExistsError,
+          WorkflowExecutionAlreadyCompletedError,
           BadRequestError {
     ExecutionId executionId = new ExecutionId(a.getDomain(), a.getExecution());
     TestWorkflowMutableState mutableState = null;
@@ -646,7 +695,10 @@ public final class TestWorkflowService implements IWorkflowService {
 
   @Override
   public void TerminateWorkflowExecution(TerminateWorkflowExecutionRequest terminateRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
           CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
@@ -702,7 +754,10 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public ListOpenWorkflowExecutionsResponse ListOpenWorkflowExecutions(
       ListOpenWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
           CadenceError {
     Optional<String> workflowIdFilter;
     WorkflowExecutionFilter executionFilter = listRequest.getExecutionFilter();
@@ -720,7 +775,10 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public ListClosedWorkflowExecutionsResponse ListClosedWorkflowExecutions(
       ListClosedWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
           CadenceError {
     Optional<String> workflowIdFilter;
     WorkflowExecutionFilter executionFilter = listRequest.getExecutionFilter();
@@ -739,32 +797,47 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public ListWorkflowExecutionsResponse ListWorkflowExecutions(
       ListWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
   @Override
   public ListArchivedWorkflowExecutionsResponse ListArchivedWorkflowExecutions(
       ListArchivedWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
   @Override
   public ListWorkflowExecutionsResponse ScanWorkflowExecutions(
       ListWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
   @Override
   public CountWorkflowExecutionsResponse CountWorkflowExecutions(
       CountWorkflowExecutionsRequest countRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError {
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
@@ -784,14 +857,22 @@ public final class TestWorkflowService implements IWorkflowService {
 
   @Override
   public ResetStickyTaskListResponse ResetStickyTaskList(ResetStickyTaskListRequest resetRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, LimitExceededError,
-          ServiceBusyError, DomainNotActiveError, CadenceError {
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
   @Override
   public QueryWorkflowResponse QueryWorkflow(QueryWorkflowRequest queryRequest)
-      throws BadRequestError, InternalServiceError, EntityNotExistsError, QueryFailedError,
+      throws BadRequestError,
+          InternalServiceError,
+          EntityNotExistsError,
+          QueryFailedError,
           CadenceError {
     ExecutionId executionId =
         new ExecutionId(queryRequest.getDomain(), queryRequest.getExecution());
@@ -820,14 +901,20 @@ public final class TestWorkflowService implements IWorkflowService {
   @Override
   public ListTaskListPartitionsResponse ListTaskListPartitions(
       ListTaskListPartitionsRequest request)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
           CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
 
   @Override
   public void RefreshWorkflowTasks(RefreshWorkflowTasksRequest request)
-      throws BadRequestError, DomainNotActiveError, ServiceBusyError, EntityNotExistsError,
+      throws BadRequestError,
+          DomainNotActiveError,
+          ServiceBusyError,
+          EntityNotExistsError,
           CadenceError {
     throw new UnsupportedOperationException("not implemented");
   }
