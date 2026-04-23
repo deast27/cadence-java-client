@@ -37,10 +37,14 @@ public interface ActivityExecutionContext {
    */
   byte[] getTaskToken();
 
-  /** @return workfow execution that requested the activity execution */
+  /**
+   * @return workfow execution that requested the activity execution
+   */
   com.uber.cadence.WorkflowExecution getWorkflowExecution();
 
-  /** @return task that caused activity execution */
+  /**
+   * @return task that caused activity execution
+   */
   ActivityTask getTask();
 
   /**
