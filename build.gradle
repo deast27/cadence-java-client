@@ -6,7 +6,7 @@ buildscript {
 
 plugins {
     id "com.github.hierynomus.license" version "0.16.1"
-    id 'com.github.sherter.google-java-format' version '0.9'
+    id 'com.diffplug.spotless' version '6.25.0'
     id 'net.ltgt.errorprone' version  '3.1.0'
     id 'java-library'
     id 'jacoco'
@@ -32,23 +32,14 @@ repositories {
 apply plugin: 'com.google.protobuf'
 apply plugin: 'idea' // IntelliJ plugin to see files generated from protos
 apply plugin: 'maven-publish'
-apply plugin: 'com.github.sherter.google-java-format'
-
-googleJavaFormat {
-    toolVersion '1.19.2'
-    include '**/*.java'
-    exclude '**/generated-sources/*'
+spotless {
+    java {
+        target 'src/**/*.java'
+        googleJavaFormat('1.19.2')
+    }
 }
 
-tasks.withType(JavaExec).configureEach {
-    jvmArgs '--add-exports', 'jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED',
-            '--add-exports', 'jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED',
-            '--add-exports', 'jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED',
-            '--add-exports', 'jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
-            '--add-exports', 'jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED'
-}
-
-tasks.googleJavaFormat.dependsOn 'licenseFormat'
+tasks.named('spotlessApply').configure { dependsOn 'licenseFormat' }
 
 group = 'com.uber.cadence'
 
@@ -187,7 +178,7 @@ clean {
 }
 
 compileJava {
-    dependsOn 'googleJavaFormat'
+    dependsOn 'spotlessApply'
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
     options.errorprone.excludedPaths = '.*/generated-sources/.*'
