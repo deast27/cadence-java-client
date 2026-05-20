@@ -386,9 +386,7 @@ class ReplayDecider implements Decider {
       return null;
     }
 
-    return queries
-        .entrySet()
-        .stream()
+    return queries.entrySet().stream()
         .collect(Collectors.toMap(Map.Entry::getKey, q -> queryWorkflow(q.getValue())));
   }
 

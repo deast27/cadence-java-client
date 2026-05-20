@@ -34,7 +34,8 @@ apply plugin: 'idea' // IntelliJ plugin to see files generated from protos
 apply plugin: 'maven-publish'
 spotless {
     java {
-        target 'src/**/*.java'
+        target 'src/main/java/**/*.java', 'src/test/java/**/*.java'
+        targetExclude 'src/gen/**'
         googleJavaFormat('1.19.2')
     }
 }
