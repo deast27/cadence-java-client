@@ -103,8 +103,12 @@ public class WorkflowExecutionUtils {
       Optional<String> workflowType,
       long timeout,
       TimeUnit unit)
-      throws TimeoutException, CancellationException, WorkflowExecutionFailedException,
-          WorkflowTerminatedException, WorkflowTimedOutException, EntityNotExistsError {
+      throws TimeoutException,
+          CancellationException,
+          WorkflowExecutionFailedException,
+          WorkflowTerminatedException,
+          WorkflowTimedOutException,
+          EntityNotExistsError {
     // getInstanceCloseEvent waits for workflow completion including new runs.
     HistoryEvent closeEvent =
         getInstanceCloseEvent(service, domain, workflowExecution, timeout, unit);

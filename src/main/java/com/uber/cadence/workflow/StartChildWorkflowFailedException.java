@@ -39,7 +39,9 @@ public final class StartChildWorkflowFailedException extends ChildWorkflowExcept
     this.failureCause = cause;
   }
 
-  /** @return enumeration that contains the cause of the failure */
+  /**
+   * @return enumeration that contains the cause of the failure
+   */
   public ChildWorkflowExecutionFailedCause getFailureCause() {
     return failureCause;
   }

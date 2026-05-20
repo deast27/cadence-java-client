@@ -41,8 +41,7 @@ public class QueryBuilder {
     }
 
     Collection<String> types =
-        workflowTypes
-            .stream()
+        workflowTypes.stream()
             .map((wfType) -> WORKFLOW_TYPE_PLACEHOLDER + wfType)
             .collect(Collectors.toList());
 

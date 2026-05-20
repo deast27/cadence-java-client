@@ -1,16 +1,16 @@
 buildscript {
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.11'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
     }
 }
 
 plugins {
-    id "com.github.hierynomus.license" version "0.15.0"
-    id 'com.github.sherter.google-java-format' version '0.9'
-    id 'net.ltgt.errorprone' version  '1.1.1'
+    id "com.github.hierynomus.license" version "0.16.1"
+    id 'com.diffplug.spotless' version '6.25.0'
+    id 'net.ltgt.errorprone' version  '3.1.0'
     id 'java-library'
     id 'jacoco'
-    id 'com.google.protobuf' version '0.8.11'
+    id 'com.google.protobuf' version '0.9.4'
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"  // Nexus publishing
 }
 
@@ -27,22 +27,20 @@ repositories {
         url 'https://plugins.gradle.org/m2/'
     }
     mavenCentral()
-    jcenter()
 }
 
 apply plugin: 'com.google.protobuf'
 apply plugin: 'idea' // IntelliJ plugin to see files generated from protos
-apply plugin: 'maven'
 apply plugin: 'maven-publish'
-apply plugin: 'com.github.sherter.google-java-format'
-
-googleJavaFormat {
-    toolVersion '1.5'
-    include '**/*.java'
-    exclude '**/generated-sources/*'
+spotless {
+    java {
+        target 'src/main/java/**/*.java', 'src/test/java/**/*.java'
+        targetExclude 'src/gen/**'
+        googleJavaFormat('1.19.2')
+    }
 }
 
-tasks.googleJavaFormat.dependsOn 'licenseFormat'
+tasks.named('spotlessApply').configure { dependsOn 'licenseFormat' }
 
 group = 'com.uber.cadence'
 
@@ -65,28 +63,28 @@ def getVersion() {
 description = '''Uber Cadence Java Client'''
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
-    errorproneJavac('com.google.errorprone:javac:9+181-r4173-1')
-    errorprone('com.google.errorprone:error_prone_core:2.3.4')
+    errorprone('com.google.errorprone:error_prone_core:2.23.0')
 
-    compile group: 'io.opentracing', name: 'opentracing-api', version: '0.33.0'
-    compile group: 'io.opentracing', name: 'opentracing-util', version: '0.33.0'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
-    compile group: 'com.google.code.gson', name: 'gson', version: '2.10'
-    compile group: 'com.uber.m3', name: 'tally-core', version: '0.11.1'
-    compile group: 'com.google.guava', name: 'guava', version: '31.1-jre'
-    compile group: 'com.cronutils', name: 'cron-utils', version: '9.2.0'
-    compile group: 'io.micrometer', name: 'micrometer-core', version: '1.10.2'
-    compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
-    compile group: 'com.auth0', name: 'java-jwt', version:'3.10.2'
-    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.21.9'
-    compile group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.10.0'
-    compile group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.21.9'
-    compile group: 'com.google.oauth-client', name: 'google-oauth-client', version: '1.35.0'
+    api group: 'io.opentracing', name: 'opentracing-api', version: '0.33.0'
+    api group: 'io.opentracing', name: 'opentracing-util', version: '0.33.0'
+    api group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    api group: 'com.google.code.gson', name: 'gson', version: '2.10'
+    api group: 'com.uber.m3', name: 'tally-core', version: '0.11.1'
+    api group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+    api group: 'com.cronutils', name: 'cron-utils', version: '9.2.0'
+    api group: 'io.micrometer', name: 'micrometer-core', version: '1.10.2'
+    api group: 'jakarta.annotation', name: 'jakarta.annotation-api', version: '2.1.1'
+    api group: 'com.auth0', name: 'java-jwt', version:'3.10.2'
+    api group: 'com.google.protobuf', name: 'protobuf-java', version: '3.25.1'
+    api group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.10.0'
+    api group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.25.1'
+    api group: 'com.google.oauth-client', name: 'google-oauth-client', version: '1.35.0'
+    compileOnly 'javax.annotation:javax.annotation-api:1.3.2'
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
@@ -96,12 +94,12 @@ dependencies {
     implementation 'io.grpc:grpc-protobuf:1.54.2'
     implementation 'io.grpc:grpc-stub:1.54.2'
 
-    compile("io.opentelemetry:opentelemetry-api:1.19.0")
+    api("io.opentelemetry:opentelemetry-api:1.19.0")
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'com.googlecode.junit-toolbox', name: 'junit-toolbox', version: '2.4'
-    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    testCompile group: 'io.grpc', name: 'grpc-testing', version: '1.54.2'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'com.googlecode.junit-toolbox', name: 'junit-toolbox', version: '2.4'
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    testImplementation group: 'io.grpc', name: 'grpc-testing', version: '1.54.2'
     testImplementation 'io.opentracing:opentracing-mock:0.33.0'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.5.1'
     testImplementation "org.mockito:mockito-inline:4.5.1" // for mocking final classes
@@ -143,17 +141,17 @@ sourceSets {
 protobuf {
     protoc {
         if (osdetector.os == "osx") {
-            artifact = 'com.google.protobuf:protoc:3.11.0:osx-x86_64' // no arm version available
+            artifact = 'com.google.protobuf:protoc:3.25.1:osx-x86_64'
         } else {
-            artifact = 'com.google.protobuf:protoc:3.11.0'
+            artifact = 'com.google.protobuf:protoc:3.25.1'
         }
     }
     plugins {
         grpc {
             if (osdetector.os == "osx") {
-                artifact = 'io.grpc:protoc-gen-grpc-java:1.28.0:osx-x86_64' // no arm version available
+                artifact = 'io.grpc:protoc-gen-grpc-java:1.54.2:osx-x86_64'
             } else {
-                artifact = 'io.grpc:protoc-gen-grpc-java:1.28.0'
+                artifact = 'io.grpc:protoc-gen-grpc-java:1.54.2'
             }
         }
     }
@@ -182,7 +180,7 @@ clean {
 }
 
 compileJava {
-    dependsOn 'googleJavaFormat'
+    dependsOn 'spotlessApply'
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
     options.errorprone.excludedPaths = '.*/generated-sources/.*'
@@ -336,7 +334,7 @@ if (signingKeyId) {
 }
 
 task registerDomain(type:JavaExec) {
-    main = 'com.uber.cadence.RegisterTestDomain'
+    mainClass = 'com.uber.cadence.RegisterTestDomain'
     classpath = sourceSets.test.runtimeClasspath
 }
 
@@ -344,6 +342,11 @@ test {
     dependsOn 'registerDomain'
     dependsOn 'licenseMain'
     finalizedBy jacocoTestReport // report is always generated after tests run
+    jvmArgs '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.time=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.lang.invoke=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.io=ALL-UNNAMED'
     testLogging {
         events 'passed', 'skipped', 'failed'
         exceptionFormat 'full'
@@ -353,14 +356,14 @@ test {
 }
 
 jacoco {
-    toolVersion = "0.8.2"
+    toolVersion = "0.8.11"
 }
 
 jacocoTestReport {
     dependsOn test
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.required = true
+        html.required = true
     }
 
     afterEvaluate {
