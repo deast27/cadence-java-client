@@ -6,7 +6,7 @@ FROM eclipse-temurin:21-jdk-alpine
 # Install dependencies using apk
 RUN apk update && apk add --virtual wget ca-certificates wget
 # Git is needed in order to update the dls submodule
-RUN apk add git libstdc++ bash curl
+RUN apk add git libstdc++ bash curl gcompat
 RUN git config --global --add safe.directory /cadence-java-client
 
 RUN mkdir /cadence-java-client
