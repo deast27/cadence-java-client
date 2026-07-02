@@ -251,7 +251,9 @@ public final class WorkerFactory {
     return true;
   }
 
-  /** @return instance of the Cadence client that this worker uses. */
+  /**
+   * @return instance of the Cadence client that this worker uses.
+   */
   public WorkflowClient getWorkflowClient() {
     return workflowClient;
   }

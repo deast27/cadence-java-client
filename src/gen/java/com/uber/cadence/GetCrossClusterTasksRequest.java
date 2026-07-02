@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class GetCrossClusterTasksRequest {
-  private List<Integer> shardIDs = new ArrayList<>();;
+  private List<Integer> shardIDs = new ArrayList<>();
+  ;
   private String targetCluster;
 }

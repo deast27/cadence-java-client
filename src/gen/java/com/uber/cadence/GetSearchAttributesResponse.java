@@ -7,5 +7,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class GetSearchAttributesResponse {
-  private Map<String, IndexedValueType> keys = new HashMap<>();;
+  private Map<String, IndexedValueType> keys = new HashMap<>();
+  ;
 }
