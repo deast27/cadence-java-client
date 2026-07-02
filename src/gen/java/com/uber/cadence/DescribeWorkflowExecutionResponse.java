@@ -9,7 +9,9 @@ import lombok.experimental.Accessors;
 public class DescribeWorkflowExecutionResponse {
   private WorkflowExecutionConfiguration executionConfiguration;
   private WorkflowExecutionInfo workflowExecutionInfo;
-  private List<PendingActivityInfo> pendingActivities = new ArrayList<>();;
-  private List<PendingChildExecutionInfo> pendingChildren = new ArrayList<>();;
+  private List<PendingActivityInfo> pendingActivities = new ArrayList<>();
+  ;
+  private List<PendingChildExecutionInfo> pendingChildren = new ArrayList<>();
+  ;
   private PendingDecisionInfo pendingDecision;
 }

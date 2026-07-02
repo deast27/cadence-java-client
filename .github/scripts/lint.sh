@@ -2,10 +2,10 @@
 
 set -ex
 
-./gradlew goJF
+./gradlew spotlessApply
 
 if [ -n "$(git status --porcelain)" ]; then
-  echo "There are changes after linting (used goJF) cmd: ./gradlew goJF"
+  echo "There are changes after linting (used spotlessApply) cmd: ./gradlew spotlessApply"
   echo "Please rerun the command and commit the changes"
   git status --porcelain
   exit 1
