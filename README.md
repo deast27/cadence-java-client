@@ -36,7 +36,7 @@ Add *cadence-client* as a dependency to your *pom.xml*:
     
 or to *build.gradle*:
 
-    compile group: 'com.uber.cadence', name: 'cadence-client', version: 'V.V.V'
+    implementation group: 'com.uber.cadence', name: 'cadence-client', version: 'V.V.V'
 
 ## Documentation
 
