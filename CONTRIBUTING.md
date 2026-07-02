@@ -8,15 +8,13 @@ Join our community on the CNCF Slack workspace at [cloud-native.slack.com](https
 
 ## Development Environment
 
-* Java 11 (currently, we use Java 11 to compile Java 8 code).
-* Gradle build tool [6.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
+* Java 21 via [Gradle toolchains](https://docs.gradle.org/current/userguide/toolchains.html)
+* Gradle build tool [8.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
 * Docker
-
-:warning: Note 1: It's currently compatible with Java 8 compiler but no guarantee in the future.
 
 ## IntelliJ IDE integration (Optional)
 
-* Make sure you set the gradle path with the right version ([currently 6.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties))
+* Make sure you set the gradle path with the right version ([currently 8.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties))
 
 ![IntelliJ](https://user-images.githubusercontent.com/4523955/135696878-81c1e62e-eb04-45e6-9bcb-785ac38b6607.png)
 
