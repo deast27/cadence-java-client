@@ -7,5 +7,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class RespondCrossClusterTasksCompletedResponse {
-  private List<CrossClusterTaskRequest> tasks = new ArrayList<>();;
+  private List<CrossClusterTaskRequest> tasks = new ArrayList<>();
+  ;
 }

@@ -65,6 +65,7 @@ public class WorkerShutDownHandler {
   }
 
   // Only for tests
+  @SuppressWarnings("DoNotCall") // the hook body is intentionally run on the calling thread
   protected static void execute() {
     registeredHandler.run();
   }

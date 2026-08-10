@@ -11,6 +11,7 @@ public class DomainInfo {
   private DomainStatus status;
   private String description;
   private String ownerEmail;
-  private Map<String, String> data = new HashMap<>();;
+  private Map<String, String> data = new HashMap<>();
+  ;
   private String uuid;
 }

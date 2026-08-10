@@ -12,5 +12,6 @@ public class CrossClusterStartChildExecutionRequestAttributes {
   private long initiatedEventID;
   private StartChildWorkflowExecutionInitiatedEventAttributes initiatedEventAttributes;
   private String targetRunID;
-  private Map<String, String> partitionConfig = new HashMap<>();;
+  private Map<String, String> partitionConfig = new HashMap<>();
+  ;
 }

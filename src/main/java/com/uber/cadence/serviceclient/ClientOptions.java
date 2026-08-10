@@ -153,22 +153,30 @@ public class ClientOptions {
     return gRPCChannel;
   }
 
-  /** @return Returns the rpc timeout value in millis. */
+  /**
+   * @return Returns the rpc timeout value in millis.
+   */
   public long getRpcTimeoutMillis() {
     return rpcTimeoutMillis;
   }
 
-  /** @return Returns the rpc timout for long poll requests in millis. */
+  /**
+   * @return Returns the rpc timout for long poll requests in millis.
+   */
   public long getRpcLongPollTimeoutMillis() {
     return rpcLongPollTimeoutMillis;
   }
 
-  /** @return Returns the rpc timout for query workflow requests in millis. */
+  /**
+   * @return Returns the rpc timout for query workflow requests in millis.
+   */
   public long getRpcQueryTimeoutMillis() {
     return rpcQueryTimeoutMillis;
   }
 
-  /** @return Returns the rpc timout for list archived workflow requests in millis. */
+  /**
+   * @return Returns the rpc timout for list archived workflow requests in millis.
+   */
   public long getRpcListArchivedWorkflowTimeoutMillis() {
     return rpcListArchivedWorkflowTimeoutMillis;
   }
