@@ -32,6 +32,7 @@ import com.uber.m3.tally.Scope;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.function.Function;
 
 /**
@@ -76,6 +77,7 @@ public final class JsonDataConverter implements DataConverter {
     GsonBuilder gsonBuilder =
         new GsonBuilder()
             .serializeNulls()
+            .registerTypeAdapter(Duration.class, new DurationTypeAdapter().nullSafe())
             .registerTypeAdapterFactory(new ThrowableTypeAdapterFactory());
     GsonBuilder intercepted = builderInterceptor.apply(gsonBuilder);
     gson = intercepted.create();

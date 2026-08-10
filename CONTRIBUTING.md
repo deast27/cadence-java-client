@@ -8,15 +8,21 @@ Join our community on the CNCF Slack workspace at [cloud-native.slack.com](https
 
 ## Development Environment
 
-* Java 11 (currently, we use Java 11 to compile Java 8 code).
-* Gradle build tool [6.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
+* Java 17
+* Gradle build tool [7.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
 * Docker
 
-:warning: Note 1: It's currently compatible with Java 8 compiler but no guarantee in the future.
+:warning: Note 1: The project targets Java 17. `JsonDataConverter` uses Gson, which reflects over
+the private fields of the JDK types it serializes. On JDK 16+ the module system rejects that, so
+applications must start the JVM with:
+
+* `--add-opens java.base/java.lang=ALL-UNNAMED` — required for exception payloads (`java.lang.Throwable`).
+* `--add-opens java.base/java.time=ALL-UNNAMED` — required when workflow/activity payloads or search
+  attributes contain `java.time` values other than `Duration` (`Duration` has a dedicated type adapter).
 
 ## IntelliJ IDE integration (Optional)
 
-* Make sure you set the gradle path with the right version ([currently 6.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties))
+* Make sure you set the gradle path with the right version ([currently 7.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties))
 
 ![IntelliJ](https://user-images.githubusercontent.com/4523955/135696878-81c1e62e-eb04-45e6-9bcb-785ac38b6607.png)
 
