@@ -63,8 +63,7 @@ public final class ScanWorkflowActivityImpl implements ScanWorkflowActivity {
 
     ScanWorkflowActivityResult result = new ScanWorkflowActivityResult();
     result.setExecutions(
-        executions
-            .stream()
+        executions.stream()
             .map(com.uber.cadence.internal.shadowing.WorkflowExecution::new)
             .collect(Collectors.toList()));
     result.setNextPageToken(resp.getNextPageToken());
@@ -110,8 +109,7 @@ public final class ScanWorkflowActivityImpl implements ScanWorkflowActivity {
     int capacity = (int) (executionInfoList.size() * samplingRate);
     capacity = Math.max(capacity, 1);
     List<WorkflowExecution> sampledExecutions =
-        executionInfoList
-            .stream()
+        executionInfoList.stream()
             .unordered()
             .map((executionInfo -> executionInfo.getExecution()))
             .limit((long) (capacity))
