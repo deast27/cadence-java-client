@@ -214,8 +214,7 @@ public class StartWorkflowTest {
 
       // assert activity span should have only 1 parent
       List<MockSpan> filtered =
-          spans
-              .stream()
+          spans.stream()
               .filter(
                   s ->
                       s.operationName().contains("ExecuteActivity")
@@ -317,8 +316,7 @@ public class StartWorkflowTest {
       } else {
         // assert start workflow
         MockSpan spanStartWorkflow =
-            spans
-                .stream()
+            spans.stream()
                 .filter(span -> span.operationName().contains("StartWorkflow"))
                 .findFirst()
                 .orElse(null);
@@ -419,8 +417,7 @@ public class StartWorkflowTest {
       } else {
         // assert start workflow
         MockSpan spanStartWorkflow =
-            spans
-                .stream()
+            spans.stream()
                 .filter(span -> span.operationName().contains("StartWorkflow"))
                 .findFirst()
                 .orElse(null);
@@ -453,19 +450,16 @@ public class StartWorkflowTest {
   }
 
   private List<MockSpan> getSpansByTraceID(List<MockSpan> spans, String traceID) {
-    return spans
-        .stream()
+    return spans.stream()
         .filter(span -> span.context().toTraceId().equals(traceID))
         .collect(Collectors.toList());
   }
 
   private List<MockSpan> getLinkedSpans(List<MockSpan> spans, SpanContext spanContext) {
-    return spans
-        .stream()
+    return spans.stream()
         .filter(
             span ->
-                span.references()
-                    .stream()
+                span.references().stream()
                     .anyMatch(
                         reference ->
                             reference.getContext().toSpanId().equals(spanContext.toSpanId())
@@ -481,8 +475,7 @@ public class StartWorkflowTest {
         String.format(
             "span %s has reference %s to parent span %s: %s",
             span, referenceType, parentSpan, span.references()),
-        span.references()
-            .stream()
+        span.references().stream()
             .anyMatch(
                 ref ->
                     Objects.equals(ref.getReferenceType(), referenceType)

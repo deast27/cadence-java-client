@@ -431,7 +431,9 @@ final class SyncDecisionContext implements WorkflowInterceptor {
     return executeChildWorkflowOnce(name, options, input, executionResult);
   }
 
-  /** @param executionResult promise that is set bu this method when child workflow is started. */
+  /**
+   * @param executionResult promise that is set bu this method when child workflow is started.
+   */
   private Promise<byte[]> executeChildWorkflowOnce(
       String name,
       ChildWorkflowOptions options,

@@ -78,7 +78,9 @@ class ActivityExecutionContextImpl implements ActivityExecutionContext {
     this.heartbeatExecutor = heartbeatExecutor;
   }
 
-  /** @see ActivityExecutionContext#recordActivityHeartbeat(Object) */
+  /**
+   * @see ActivityExecutionContext#recordActivityHeartbeat(Object)
+   */
   @Override
   public <V> void recordActivityHeartbeat(V details) throws ActivityCompletionException {
     if (heartbeatExecutor.isShutdown()) {
@@ -188,13 +190,17 @@ class ActivityExecutionContextImpl implements ActivityExecutionContext {
     return doNotCompleteOnReturn;
   }
 
-  /** @see ActivityExecutionContext#getTask() */
+  /**
+   * @see ActivityExecutionContext#getTask()
+   */
   @Override
   public ActivityTask getTask() {
     return task;
   }
 
-  /** @see ActivityExecutionContext#getService() */
+  /**
+   * @see ActivityExecutionContext#getService()
+   */
   @Override
   public IWorkflowService getService() {
     return service;

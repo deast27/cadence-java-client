@@ -7,6 +7,8 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ListTaskListPartitionsResponse {
-  private List<TaskListPartitionMetadata> activityTaskListPartitions = new ArrayList<>();;
-  private List<TaskListPartitionMetadata> decisionTaskListPartitions = new ArrayList<>();;
+  private List<TaskListPartitionMetadata> activityTaskListPartitions = new ArrayList<>();
+  ;
+  private List<TaskListPartitionMetadata> decisionTaskListPartitions = new ArrayList<>();
+  ;
 }

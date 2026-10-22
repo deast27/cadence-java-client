@@ -98,6 +98,7 @@ public final class ShadowingOptions {
       this.workflowTypes = Sets.newHashSet(workflowTypes);
       return this;
     }
+
     /**
      * Optional: The workflow start time filter is to filter the shadowed workflows by workflow
      * start time.

@@ -48,7 +48,9 @@ public final class ActivityTaskTimeoutException extends RuntimeException {
     this.details = details;
   }
 
-  /** @return The value from the last activity heartbeat details field. */
+  /**
+   * @return The value from the last activity heartbeat details field.
+   */
   public byte[] getDetails() {
     return details;
   }

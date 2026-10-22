@@ -113,7 +113,9 @@ public class ReplaceDeciderDecisionTaskWithHistoryIteratorTest {
 
   @Test
   public void testGetHistoryWithSinglePageOfEvents()
-      throws CadenceError, NoSuchMethodException, InvocationTargetException,
+      throws CadenceError,
+          NoSuchMethodException,
+          InvocationTargetException,
           IllegalAccessException {
     // Arrange
     List<HistoryEvent> events = Arrays.asList(createMockHistoryEvent(2), createMockHistoryEvent(3));
@@ -142,7 +144,9 @@ public class ReplaceDeciderDecisionTaskWithHistoryIteratorTest {
 
   @Test
   public void testGetHistoryWithMultiplePages()
-      throws CadenceError, NoSuchMethodException, InvocationTargetException,
+      throws CadenceError,
+          NoSuchMethodException,
+          InvocationTargetException,
           IllegalAccessException {
     // First page events
     List<HistoryEvent> firstPageEvents =
@@ -193,7 +197,9 @@ public class ReplaceDeciderDecisionTaskWithHistoryIteratorTest {
 
   @Test(expected = Error.class)
   public void testGetHistoryFailure()
-      throws InvocationTargetException, IllegalAccessException, NoSuchMethodException,
+      throws InvocationTargetException,
+          IllegalAccessException,
+          NoSuchMethodException,
           CadenceError {
     when(mockService.GetWorkflowExecutionHistory(
             new GetWorkflowExecutionHistoryRequest()
@@ -215,7 +221,9 @@ public class ReplaceDeciderDecisionTaskWithHistoryIteratorTest {
 
   @Test(expected = Error.class)
   public void testEmptyHistory()
-      throws InvocationTargetException, IllegalAccessException, NoSuchMethodException,
+      throws InvocationTargetException,
+          IllegalAccessException,
+          NoSuchMethodException,
           CadenceError {
     when(mockService.GetWorkflowExecutionHistory(
             new GetWorkflowExecutionHistoryRequest()

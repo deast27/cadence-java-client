@@ -34,6 +34,10 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.MonthDay;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -42,6 +46,41 @@ import org.junit.Test;
 public class JsonDataConverterTest {
 
   private final DataConverter converter = JsonDataConverter.getInstance();
+
+  @Test
+  public void testDateTypesKeepLegacyJsonShape() {
+    LocalDateTime dateTime = LocalDateTime.of(2026, 10, 22, 23, 12, 10, 539238199);
+    byte[] data = converter.toData(dateTime);
+    assertEquals(
+        "{\"date\":{\"year\":2026,\"month\":10,\"day\":22},"
+            + "\"time\":{\"hour\":23,\"minute\":12,\"second\":10,\"nano\":539238199}}",
+        new String(data, StandardCharsets.UTF_8));
+    assertEquals(dateTime, converter.fromData(data, LocalDateTime.class, LocalDateTime.class));
+
+    YearMonth yearMonth = YearMonth.of(2026, 10);
+    assertEquals(
+        "{\"year\":2026,\"month\":10}",
+        new String(converter.toData(yearMonth), StandardCharsets.UTF_8));
+    assertEquals(
+        yearMonth,
+        converter.fromData(converter.toData(yearMonth), YearMonth.class, YearMonth.class));
+
+    MonthDay monthDay = MonthDay.of(2, 29);
+    assertEquals(
+        "{\"month\":2,\"day\":29}", new String(converter.toData(monthDay), StandardCharsets.UTF_8));
+    assertEquals(
+        monthDay, converter.fromData(converter.toData(monthDay), MonthDay.class, MonthDay.class));
+  }
+
+  @Test
+  public void testDecodesLegacyLocalDatePayload() {
+    byte[] legacy = "{\"year\":2020,\"month\":2,\"day\":29}".getBytes(StandardCharsets.UTF_8);
+    assertEquals(
+        LocalDate.of(2020, 2, 29), converter.fromData(legacy, LocalDate.class, LocalDate.class));
+    assertNull(
+        converter.fromData(
+            "null".getBytes(StandardCharsets.UTF_8), LocalDate.class, LocalDate.class));
+  }
 
   @Test
   public void testEntity() {

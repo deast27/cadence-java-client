@@ -1,17 +1,17 @@
 buildscript {
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.10.0'
     }
 }
 
 plugins {
     id "com.github.hierynomus.license" version "0.16.1"
-    id 'com.diffplug.spotless' version '6.25.0'
-    id 'net.ltgt.errorprone' version  '3.1.0'
+    id 'com.diffplug.spotless' version '8.10.4'
+    id 'net.ltgt.errorprone' version '5.1.1'
     id 'java-library'
     id 'jacoco'
-    id 'com.google.protobuf' version '0.9.4'
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"  // Nexus publishing
+    id 'com.google.protobuf' version '0.10.0'
+    id("io.github.gradle-nexus.publish-plugin") version "2.0.0"  // Nexus publishing
 }
 
 ext {
@@ -24,7 +24,7 @@ ext {
 
 repositories {
     maven {
-        url 'https://plugins.gradle.org/m2/'
+        url = 'https://plugins.gradle.org/m2/'
     }
     mavenCentral()
 }
@@ -37,7 +37,7 @@ spotless {
     java {
         target 'src/**/*.java'
         targetExclude '**/generated-sources/**'
-        googleJavaFormat('1.19.2')
+        googleJavaFormat('1.36.1')
     }
 }
 
@@ -49,12 +49,9 @@ version = getVersion()
 
 def getVersion() {
     try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
+        def gitTag = providers.exec {
             commandLine 'git', 'describe', '--tags'
-            standardOutput = stdout
-        }
-        def gitTag = stdout.toString().trim().replaceFirst("^v", "")
+        }.standardOutput.asText.get().trim().replaceFirst("^v", "")
         return gitTag
     } catch (Exception e) {
         return "0.0.0-LOCAL"
@@ -65,31 +62,31 @@ description = '''Uber Cadence Java Client'''
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(27)
     }
 }
 
 dependencies {
-    errorprone('com.google.errorprone:error_prone_core:2.23.0')
+    errorprone('com.google.errorprone:error_prone_core:2.50.0')
 
-    api group: 'io.opentracing', name: 'opentracing-api', version: '0.33.0'
-    api group: 'io.opentracing', name: 'opentracing-util', version: '0.33.0'
-    api group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
-    api group: 'com.google.code.gson', name: 'gson', version: '2.10'
-    api group: 'com.uber.m3', name: 'tally-core', version: '0.11.1'
-    api group: 'com.google.guava', name: 'guava', version: '31.1-jre'
-    api group: 'com.cronutils', name: 'cron-utils', version: '9.2.0'
-    api group: 'io.micrometer', name: 'micrometer-core', version: '1.10.2'
-    api group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
-    api group: 'com.auth0', name: 'java-jwt', version:'3.10.2'
-    api group: 'com.google.protobuf', name: 'protobuf-java', version: '3.21.9'
-    api group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.10.0'
-    api group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.21.9'
-    api group: 'com.google.oauth-client', name: 'google-oauth-client', version: '1.35.0'
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
-    testCompileOnly 'org.projectlombok:lombok:1.18.30'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    api 'io.opentracing:opentracing-api:0.33.0'
+    api 'io.opentracing:opentracing-util:0.33.0'
+    api 'org.slf4j:slf4j-api:1.7.36'
+    api 'com.google.code.gson:gson:2.10'
+    api 'com.uber.m3:tally-core:0.11.1'
+    api 'com.google.guava:guava:31.1-jre'
+    api 'com.cronutils:cron-utils:9.2.0'
+    api 'io.micrometer:micrometer-core:1.10.2'
+    api 'javax.annotation:javax.annotation-api:1.3.2'
+    api 'com.auth0:java-jwt:3.10.2'
+    api 'com.google.protobuf:protobuf-java:3.21.9'
+    api 'com.google.api.grpc:proto-google-common-protos:2.10.0'
+    api 'com.google.protobuf:protobuf-java-util:3.21.9'
+    api 'com.google.oauth-client:google-oauth-client:1.35.0'
+    compileOnly 'org.projectlombok:lombok:1.18.48'
+    annotationProcessor 'org.projectlombok:lombok:1.18.48'
+    testCompileOnly 'org.projectlombok:lombok:1.18.48'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.48'
 
     implementation 'io.grpc:grpc-netty-shaded:1.54.2'
     implementation 'io.grpc:grpc-protobuf:1.54.2'
@@ -97,18 +94,32 @@ dependencies {
 
     api("io.opentelemetry:opentelemetry-api:1.19.0")
 
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-    testImplementation group: 'com.googlecode.junit-toolbox', name: 'junit-toolbox', version: '2.4'
-    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    testImplementation group: 'io.grpc', name: 'grpc-testing', version: '1.54.2'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'com.googlecode.junit-toolbox:junit-toolbox:2.4'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.3'
+    testImplementation 'io.grpc:grpc-testing:1.54.2'
     testImplementation 'io.opentracing:opentracing-mock:0.33.0'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.8.0'
+    testImplementation 'org.mockito:mockito-core:5.24.0'
+}
+
+configurations {
+    mockitoAgent
+}
+
+dependencies {
+    mockitoAgent('org.mockito:mockito-core:5.24.0') {
+        transitive = false
+    }
 }
 
 license {
-    header rootProject.file('license-header.txt')
-    skipExistingHeaders true
+    header = rootProject.file('license-header.txt')
+    skipExistingHeaders = true
     excludes(["**/*.json", "**/idls","com/uber/cadence/*.java", "com/uber/cadence/shadower/*.java"]) // config files and generated code
+}
+
+tasks.withType(com.hierynomus.gradle.license.tasks.LicenseCheck).configureEach {
+    exclude { it.file.toPath().startsWith(layout.buildDirectory.get().asFile.toPath()) } // generated protobuf/gRPC sources
 }
 
 task printVersion {
@@ -165,26 +176,21 @@ protobuf {
     }
 }
 
-protobuf {
-    generatedFilesBaseDir = "$buildDir/generated-sources/proto"
-}
 idea {
     module {
-        sourceDirs += file("$buildDir/generated/main/java");
-        sourceDirs += file("$buildDir/generated/main/grpc");
+        sourceDirs += layout.buildDirectory.dir("generated/sources/proto/main/java").get().asFile
+        sourceDirs += layout.buildDirectory.dir("generated/sources/proto/main/grpc").get().asFile
     }
-}
-
-clean {
-    delete protobuf.generatedFilesBaseDir
 }
 
 compileJava {
     dependsOn 'spotlessApply'
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
-    options.errorprone.excludedPaths = '.*/generated-sources/.*'
+    options.errorprone.excludedPaths = '.*/build/generated/.*'
     options.errorprone {
+        // Error Prone 2.50 adds many warning-level checks; only error-level checks fail the build
+        disableAllWarnings = true
         disable('BadImport')
         disable('PreferJavaTimeOverload')
         disable('JavaTimeDefaultTimeZone')
@@ -196,8 +202,10 @@ compileJava {
 compileTestJava {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:none' << '-Xlint:deprecation' << '-Werror'
-    options.errorprone.excludedPaths = '.*/generated-sources/.*'
+    options.errorprone.excludedPaths = '.*/build/generated/.*'
     options.errorprone {
+        // Error Prone 2.50 adds many warning-level checks; only error-level checks fail the build
+        disableAllWarnings = true
         disable('BadImport')
         disable('PreferJavaTimeOverload')
         disable('JavaTimeDefaultTimeZone')
@@ -209,11 +217,11 @@ compileTestJava {
 // Generation version.properties for value to be included into the request header
 task createProperties(dependsOn: processResources) {
     doLast {
-        def subdir = new File("$buildDir/resources/main/com/uber/cadence/")
+        def subdir = layout.buildDirectory.dir("resources/main/com/uber/cadence").get().asFile
         if( !subdir.exists() ) {
             subdir.mkdirs()
         }
-        new File("$buildDir/resources/main/com/uber/cadence/version.properties").withWriter { w ->
+        new File(subdir, "version.properties").withWriter { w ->
             Properties p = new Properties()
             p['cadence-client-version'] = project.version.toString()
             p.store w, null
@@ -247,8 +255,8 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allSource
 }
 
-artifacts {
-    archives javadocJar, sourcesJar
+tasks.named('assemble') {
+    dependsOn javadocJar, sourcesJar
 }
 
 publishing {
@@ -290,13 +298,13 @@ publishing {
     repositories {
         maven {
             credentials {
-                username ossrhUsername
-                password ossrhPassword
+                username = ossrhUsername
+                password = ossrhPassword
             }
             if(project.version.endsWith('-SNAPSHOT')) {
-                url 'https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/'
+                url = 'https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots/'
             } else {
-                url 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/'
+                url = 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/'
             }
         }
     }
@@ -340,6 +348,7 @@ test {
     dependsOn 'registerDomain'
     dependsOn 'licenseMain'
     finalizedBy jacocoTestReport // report is always generated after tests run
+    jvmArgumentProviders.add({ ["-javaagent:${configurations.mockitoAgent.singleFile}"] } as CommandLineArgumentProvider)
     jvmArgs += [
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED',
@@ -348,15 +357,15 @@ test {
         '--add-opens', 'java.base/java.io=ALL-UNNAMED',
     ]
     testLogging {
-        events 'passed', 'skipped', 'failed'
-        exceptionFormat 'full'
+        events = ['passed', 'skipped', 'failed']
+        exceptionFormat = 'full'
         // Uncomment the following line if you want to see test logs in gradlew run.
-        showStandardStreams false
+        showStandardStreams = false
     }
 }
 
 jacoco {
-    toolVersion = "0.8.11"
+    toolVersion = "0.8.15"
 }
 
 jacocoTestReport {

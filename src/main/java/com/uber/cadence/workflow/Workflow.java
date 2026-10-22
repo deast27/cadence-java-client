@@ -1221,7 +1221,9 @@ public final class Workflow {
    *     attr2.put("CustomIntField", 2);
    *     attr2.put("CustomKeywordField", "Seattle");
    *     Workflow.upsertSearchAttributes(attr2);
-   * </pre></code> will eventually have search attributes as:
+   * </pre>
+   *
+   * </code> will eventually have search attributes as:
    *
    * <pre><code>
    *     {
@@ -1229,7 +1231,9 @@ public final class Workflow {
    *       "CustomBoolField": true,
    *       "CustomKeywordField": "Seattle",
    *     }
-   * </pre></code>
+   * </pre>
+   *
+   * </code>
    *
    * @param searchAttributes map of String to Object value that can be used to search in list APIs
    */

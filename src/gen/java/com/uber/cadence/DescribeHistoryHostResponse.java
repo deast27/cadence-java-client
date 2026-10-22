@@ -8,7 +8,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class DescribeHistoryHostResponse {
   private int numberOfShards;
-  private List<Integer> shardIDs = new ArrayList<>();;
+  private List<Integer> shardIDs = new ArrayList<>();
+  ;
   private DomainCacheInfo domainCache;
   private String shardControllerStatus;
   private String address;

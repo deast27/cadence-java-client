@@ -260,8 +260,7 @@ final class GrpcServiceStubs implements IGrpcServiceStubs {
               // cast should not throw error as we are using the builder
               message =
                   (ReqT)
-                      request
-                          .toBuilder()
+                      request.toBuilder()
                           .setRequest(request.getRequest().toBuilder().setHeader(newHeader))
                           .build();
             } else if (Objects.equals(
@@ -274,8 +273,7 @@ final class GrpcServiceStubs implements IGrpcServiceStubs {
               // cast should not throw error as we are using the builder
               message =
                   (ReqT)
-                      request
-                          .toBuilder()
+                      request.toBuilder()
                           .setStartRequest(
                               request.getStartRequest().toBuilder().setHeader(newHeader))
                           .build();
@@ -290,17 +288,11 @@ final class GrpcServiceStubs implements IGrpcServiceStubs {
               // cast should not throw error as we are using the builder
               message =
                   (ReqT)
-                      request
-                          .toBuilder()
+                      request.toBuilder()
                           .setRequest(
-                              request
-                                  .getRequest()
-                                  .toBuilder()
+                              request.getRequest().toBuilder()
                                   .setStartRequest(
-                                      request
-                                          .getRequest()
-                                          .getStartRequest()
-                                          .toBuilder()
+                                      request.getRequest().getStartRequest().toBuilder()
                                           .setHeader(newHeader)))
                           .build();
             }

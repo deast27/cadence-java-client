@@ -32,6 +32,11 @@ import com.uber.m3.tally.Scope;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.MonthDay;
+import java.time.YearMonth;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 /**
@@ -76,6 +81,9 @@ public final class JsonDataConverter implements DataConverter {
     GsonBuilder gsonBuilder =
         new GsonBuilder()
             .serializeNulls()
+            .registerTypeAdapter(LocalDate.class, LegacyDateFieldsTypeAdapter.LOCAL_DATE)
+            .registerTypeAdapter(YearMonth.class, LegacyDateFieldsTypeAdapter.YEAR_MONTH)
+            .registerTypeAdapter(MonthDay.class, LegacyDateFieldsTypeAdapter.MONTH_DAY)
             .registerTypeAdapterFactory(new ThrowableTypeAdapterFactory());
     GsonBuilder intercepted = builderInterceptor.apply(gsonBuilder);
     gson = intercepted.create();
@@ -239,6 +247,83 @@ public final class JsonDataConverter implements DataConverter {
       }
 
       return new CustomThrowableTypeAdapter(gson, this).nullSafe();
+    }
+  }
+
+  /**
+   * Keeps the {"year":..,"month":..,"day":..} JSON shape that Gson's reflective adapter produced
+   * for {@link LocalDate}, {@link YearMonth} and {@link MonthDay} before JDK 27 made their fields
+   * transient. Without it these values serialize as {} and deserialize as year/month/day 0.
+   */
+  private abstract static class LegacyDateFieldsTypeAdapter<T> extends TypeAdapter<T> {
+
+    static final TypeAdapter<LocalDate> LOCAL_DATE =
+        new LegacyDateFieldsTypeAdapter<LocalDate>() {
+          @Override
+          void writeFields(JsonWriter out, LocalDate value) throws IOException {
+            out.name("year").value(value.getYear());
+            out.name("month").value(value.getMonthValue());
+            out.name("day").value(value.getDayOfMonth());
+          }
+
+          @Override
+          LocalDate fromFields(Map<String, Integer> fields) {
+            return LocalDate.of(fields.get("year"), fields.get("month"), fields.get("day"));
+          }
+        }.nullSafe();
+
+    static final TypeAdapter<YearMonth> YEAR_MONTH =
+        new LegacyDateFieldsTypeAdapter<YearMonth>() {
+          @Override
+          void writeFields(JsonWriter out, YearMonth value) throws IOException {
+            out.name("year").value(value.getYear());
+            out.name("month").value(value.getMonthValue());
+          }
+
+          @Override
+          YearMonth fromFields(Map<String, Integer> fields) {
+            return YearMonth.of(fields.get("year"), fields.get("month"));
+          }
+        }.nullSafe();
+
+    static final TypeAdapter<MonthDay> MONTH_DAY =
+        new LegacyDateFieldsTypeAdapter<MonthDay>() {
+          @Override
+          void writeFields(JsonWriter out, MonthDay value) throws IOException {
+            out.name("month").value(value.getMonthValue());
+            out.name("day").value(value.getDayOfMonth());
+          }
+
+          @Override
+          MonthDay fromFields(Map<String, Integer> fields) {
+            return MonthDay.of(fields.get("month"), fields.get("day"));
+          }
+        }.nullSafe();
+
+    abstract void writeFields(JsonWriter out, T value) throws IOException;
+
+    abstract T fromFields(Map<String, Integer> fields);
+
+    @Override
+    public void write(JsonWriter out, T value) throws IOException {
+      out.beginObject();
+      writeFields(out, value);
+      out.endObject();
+    }
+
+    @Override
+    public T read(JsonReader in) throws IOException {
+      Map<String, Integer> fields = new HashMap<>();
+      in.beginObject();
+      while (in.hasNext()) {
+        fields.put(in.nextName(), in.nextInt());
+      }
+      in.endObject();
+      try {
+        return fromFields(fields);
+      } catch (RuntimeException e) {
+        throw new IOException("Cannot deserialize date from fields " + fields, e);
+      }
     }
   }
 }

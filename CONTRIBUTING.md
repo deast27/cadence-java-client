@@ -8,13 +8,13 @@ Join our community on the CNCF Slack workspace at [cloud-native.slack.com](https
 
 ## Development Environment
 
-* Java 21 via [Gradle toolchains](https://docs.gradle.org/current/userguide/toolchains.html)
-* Gradle build tool [8.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
+* Java 27 via [Gradle toolchains](https://docs.gradle.org/current/userguide/toolchains.html)
+* Gradle build tool [9.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties)
 * Docker
 
 ## IntelliJ IDE integration (Optional)
 
-* Make sure you set the gradle path with the right version ([currently 8.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties))
+* Make sure you set the gradle path with the right version ([currently 9.x](https://github.com/uber/cadence-java-client/blob/master/gradle/wrapper/gradle-wrapper.properties))
 
 ![IntelliJ](https://user-images.githubusercontent.com/4523955/135696878-81c1e62e-eb04-45e6-9bcb-785ac38b6607.png)
 

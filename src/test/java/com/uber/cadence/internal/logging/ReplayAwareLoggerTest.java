@@ -394,6 +394,7 @@ public class ReplayAwareLoggerTest {
     when(mockLogger.isTraceEnabled(marker)).thenReturn(false);
     assertFalse(replayAwareLogger.isTraceEnabled(marker));
   }
+
   // ===========================
   // Tests for debug(String)
   // ===========================
@@ -736,6 +737,7 @@ public class ReplayAwareLoggerTest {
     when(mockLogger.isDebugEnabled(marker)).thenReturn(false);
     assertFalse(replayAwareLogger.isDebugEnabled(marker));
   }
+
   // ===========================
   // Tests for info(String)
   // ===========================
@@ -1077,6 +1079,7 @@ public class ReplayAwareLoggerTest {
     when(mockLogger.isInfoEnabled(marker)).thenReturn(false);
     assertFalse(replayAwareLogger.isInfoEnabled(marker));
   }
+
   // ===========================
   // Tests for warn(String)
   // ===========================
@@ -1418,6 +1421,7 @@ public class ReplayAwareLoggerTest {
     when(mockLogger.isWarnEnabled(marker)).thenReturn(false);
     assertFalse(replayAwareLogger.isWarnEnabled(marker));
   }
+
   // ===========================
   // Tests for error(String)
   // ===========================
