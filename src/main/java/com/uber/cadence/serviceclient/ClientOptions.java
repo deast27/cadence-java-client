@@ -36,6 +36,7 @@ public class ClientOptions {
 
   /** Default RPC timeout used for all non long poll calls. */
   private static final long DEFAULT_RPC_TIMEOUT_MILLIS = 3 * 1000;
+
   /** Default RPC timeout used for all long poll calls. */
   private static final long DEFAULT_POLL_RPC_TIMEOUT_MILLIS = 30 * 1000;
 
@@ -59,30 +60,43 @@ public class ClientOptions {
   private final String host;
   private final int port;
   private final ManagedChannel gRPCChannel;
+
   /** The timeout in milliseconds */
   private final long rpcTimeoutMillis;
+
   /** The ttimeout for long poll calls in milliseconds */
   private final long rpcLongPollTimeoutMillis;
+
   /** The timeout for query workflow call in milliseconds */
   private final long rpcQueryTimeoutMillis;
+
   /** The timeout for list archived workflow call in milliseconds */
   private final long rpcListArchivedWorkflowTimeoutMillis;
+
   /** Grpc Service name that the Cadence service was started with. */
   private final String serviceName;
+
   /** Name of the service using the cadence-client. */
   private final String clientAppName;
+
   /** Client for metrics reporting. */
   private final Scope metricsScope;
+
   /** Optional transport headers */
   private final Map<String, String> transportHeaders;
+
   /** Optional headers */
   private final Map<String, String> headers;
+
   /** Optional authorization provider */
   private final IAuthorizationProvider authProvider;
+
   /** Optional Feature flags to turn on/off some Cadence features */
   private final FeatureFlags featureFlags;
+
   /** Optional isolation group of the service if tasklist isolation is enabled */
   private final String isolationGroup;
+
   /** Optional tracer for service client, default is GlobalTracer */
   private final Tracer tracer;
 
@@ -153,22 +167,30 @@ public class ClientOptions {
     return gRPCChannel;
   }
 
-  /** @return Returns the rpc timeout value in millis. */
+  /**
+   * @return Returns the rpc timeout value in millis.
+   */
   public long getRpcTimeoutMillis() {
     return rpcTimeoutMillis;
   }
 
-  /** @return Returns the rpc timout for long poll requests in millis. */
+  /**
+   * @return Returns the rpc timout for long poll requests in millis.
+   */
   public long getRpcLongPollTimeoutMillis() {
     return rpcLongPollTimeoutMillis;
   }
 
-  /** @return Returns the rpc timout for query workflow requests in millis. */
+  /**
+   * @return Returns the rpc timout for query workflow requests in millis.
+   */
   public long getRpcQueryTimeoutMillis() {
     return rpcQueryTimeoutMillis;
   }
 
-  /** @return Returns the rpc timout for list archived workflow requests in millis. */
+  /**
+   * @return Returns the rpc timout for list archived workflow requests in millis.
+   */
   public long getRpcListArchivedWorkflowTimeoutMillis() {
     return rpcListArchivedWorkflowTimeoutMillis;
   }

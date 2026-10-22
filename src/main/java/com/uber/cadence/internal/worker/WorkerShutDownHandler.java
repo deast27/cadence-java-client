@@ -65,6 +65,7 @@ public class WorkerShutDownHandler {
   }
 
   // Only for tests
+  @SuppressWarnings("DoNotCall")
   protected static void execute() {
     registeredHandler.run();
   }

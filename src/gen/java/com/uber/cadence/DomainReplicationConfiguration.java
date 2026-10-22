@@ -8,5 +8,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class DomainReplicationConfiguration {
   private String activeClusterName;
-  private List<ClusterReplicationConfiguration> clusters = new ArrayList<>();;
+  private List<ClusterReplicationConfiguration> clusters = new ArrayList<>();
+  ;
 }

@@ -114,8 +114,11 @@ public interface IWorkflowService {
    * @param registerRequest
    */
   void RegisterDomain(RegisterDomainRequest registerRequest)
-      throws BadRequestError, DomainAlreadyExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          DomainAlreadyExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * DescribeDomain returns the information and configuration for a registered domain.
@@ -123,13 +126,19 @@ public interface IWorkflowService {
    * @param describeRequest
    */
   DescribeDomainResponse DescribeDomain(DescribeDomainRequest describeRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   DiagnoseWorkflowExecutionResponse DiagnoseWorkflowExecution(
       DiagnoseWorkflowExecutionRequest diagnoseRequest)
-      throws DomainNotActiveError, ServiceBusyError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws DomainNotActiveError,
+          ServiceBusyError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ListDomains returns the information and configuration for all domains.
@@ -137,8 +146,11 @@ public interface IWorkflowService {
    * @param listRequest
    */
   ListDomainsResponse ListDomains(ListDomainsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * UpdateDomain is used to update the information and configuration for a registered domain.
@@ -146,8 +158,12 @@ public interface IWorkflowService {
    * @param updateRequest
    */
   UpdateDomainResponse UpdateDomain(UpdateDomainRequest updateRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, DomainNotActiveError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * DeprecateDomain us used to update status of a registered domain to DEPRECATED. Once the domain
@@ -157,8 +173,12 @@ public interface IWorkflowService {
    * @param deprecateRequest
    */
   void DeprecateDomain(DeprecateDomainRequest deprecateRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, DomainNotActiveError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * RestartWorkflowExecution restarts a previous workflow If the workflow is currently running it
@@ -168,8 +188,13 @@ public interface IWorkflowService {
    */
   RestartWorkflowExecutionResponse RestartWorkflowExecution(
       RestartWorkflowExecutionRequest restartRequest)
-      throws BadRequestError, ServiceBusyError, DomainNotActiveError, LimitExceededError,
-          EntityNotExistsError, ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * StartWorkflowExecution starts a new long running workflow instance. It will create the instance
@@ -180,9 +205,14 @@ public interface IWorkflowService {
    * @param startRequest
    */
   StartWorkflowExecutionResponse StartWorkflowExecution(StartWorkflowExecutionRequest startRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * StartWorkflowExecutionAsync starts a new long running workflow instance asynchronously. It will
@@ -193,9 +223,14 @@ public interface IWorkflowService {
    */
   StartWorkflowExecutionAsyncResponse StartWorkflowExecutionAsync(
       StartWorkflowExecutionAsyncRequest startRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * Returns the history of specified workflow execution. It fails with 'EntityNotExistError' if
@@ -205,8 +240,11 @@ public interface IWorkflowService {
    */
   GetWorkflowExecutionHistoryResponse GetWorkflowExecutionHistory(
       GetWorkflowExecutionHistoryRequest getRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * PollForDecisionTask is called by application worker to process DecisionTask from a specific
@@ -218,8 +256,13 @@ public interface IWorkflowService {
    * @param pollRequest
    */
   PollForDecisionTaskResponse PollForDecisionTask(PollForDecisionTaskRequest pollRequest)
-      throws BadRequestError, ServiceBusyError, LimitExceededError, EntityNotExistsError,
-          DomainNotActiveError, ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          ServiceBusyError,
+          LimitExceededError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * RespondDecisionTaskCompleted is called by application worker to complete a DecisionTask handed
@@ -234,8 +277,13 @@ public interface IWorkflowService {
    */
   RespondDecisionTaskCompletedResponse RespondDecisionTaskCompleted(
       RespondDecisionTaskCompletedRequest completeRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -248,8 +296,13 @@ public interface IWorkflowService {
    * @param failedRequest
    */
   void RespondDecisionTaskFailed(RespondDecisionTaskFailedRequest failedRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -264,8 +317,13 @@ public interface IWorkflowService {
    * @param pollRequest
    */
   PollForActivityTaskResponse PollForActivityTask(PollForActivityTaskRequest pollRequest)
-      throws BadRequestError, ServiceBusyError, LimitExceededError, EntityNotExistsError,
-          DomainNotActiveError, ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          ServiceBusyError,
+          LimitExceededError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * RecordActivityTaskHeartbeat is called by application worker while it is processing an
@@ -279,8 +337,13 @@ public interface IWorkflowService {
    */
   RecordActivityTaskHeartbeatResponse RecordActivityTaskHeartbeat(
       RecordActivityTaskHeartbeatRequest heartbeatRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -295,8 +358,13 @@ public interface IWorkflowService {
    */
   RecordActivityTaskHeartbeatResponse RecordActivityTaskHeartbeatByID(
       RecordActivityTaskHeartbeatByIDRequest heartbeatRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -310,8 +378,13 @@ public interface IWorkflowService {
    * @param completeRequest
    */
   void RespondActivityTaskCompleted(RespondActivityTaskCompletedRequest completeRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -325,8 +398,13 @@ public interface IWorkflowService {
    * @param completeRequest
    */
   void RespondActivityTaskCompletedByID(RespondActivityTaskCompletedByIDRequest completeRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -340,8 +418,13 @@ public interface IWorkflowService {
    * @param failRequest
    */
   void RespondActivityTaskFailed(RespondActivityTaskFailedRequest failRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -355,8 +438,13 @@ public interface IWorkflowService {
    * @param failRequest
    */
   void RespondActivityTaskFailedByID(RespondActivityTaskFailedByIDRequest failRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -370,8 +458,13 @@ public interface IWorkflowService {
    * @param canceledRequest
    */
   void RespondActivityTaskCanceled(RespondActivityTaskCanceledRequest canceledRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -385,8 +478,13 @@ public interface IWorkflowService {
    * @param canceledRequest
    */
   void RespondActivityTaskCanceledByID(RespondActivityTaskCanceledByIDRequest canceledRequest)
-      throws BadRequestError, EntityNotExistsError, DomainNotActiveError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
           CadenceError;
 
   /**
@@ -399,9 +497,15 @@ public interface IWorkflowService {
    * @param cancelRequest
    */
   void RequestCancelWorkflowExecution(RequestCancelWorkflowExecutionRequest cancelRequest)
-      throws BadRequestError, EntityNotExistsError, CancellationAlreadyRequestedError,
-          ServiceBusyError, DomainNotActiveError, LimitExceededError,
-          ClientVersionNotSupportedError, WorkflowExecutionAlreadyCompletedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          CancellationAlreadyRequestedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
+          CadenceError;
 
   /**
    * SignalWorkflowExecution is used to send a signal event to running workflow execution. This
@@ -411,9 +515,14 @@ public interface IWorkflowService {
    * @param signalRequest
    */
   void SignalWorkflowExecution(SignalWorkflowExecutionRequest signalRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, DomainNotActiveError,
-          LimitExceededError, ClientVersionNotSupportedError,
-          WorkflowExecutionAlreadyCompletedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
+          CadenceError;
 
   /**
    * SignalWithStartWorkflowExecution is used to ensure sending signal to a workflow. If the
@@ -426,8 +535,13 @@ public interface IWorkflowService {
    */
   StartWorkflowExecutionResponse SignalWithStartWorkflowExecution(
       SignalWithStartWorkflowExecutionRequest signalWithStartRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, DomainNotActiveError,
-          LimitExceededError, WorkflowExecutionAlreadyStartedError, ClientVersionNotSupportedError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          WorkflowExecutionAlreadyStartedError,
+          ClientVersionNotSupportedError,
           CadenceError;
 
   /**
@@ -439,9 +553,14 @@ public interface IWorkflowService {
    */
   SignalWithStartWorkflowExecutionAsyncResponse SignalWithStartWorkflowExecutionAsync(
       SignalWithStartWorkflowExecutionAsyncRequest signalWithStartRequest)
-      throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-          DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          WorkflowExecutionAlreadyStartedError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          EntityNotExistsError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ResetWorkflowExecution reset an existing workflow execution to DecisionTaskCompleted
@@ -450,8 +569,13 @@ public interface IWorkflowService {
    * @param resetRequest
    */
   ResetWorkflowExecutionResponse ResetWorkflowExecution(ResetWorkflowExecutionRequest resetRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, DomainNotActiveError,
-          LimitExceededError, ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * TerminateWorkflowExecution terminates an existing workflow execution by recording
@@ -461,9 +585,14 @@ public interface IWorkflowService {
    * @param terminateRequest
    */
   void TerminateWorkflowExecution(TerminateWorkflowExecutionRequest terminateRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, DomainNotActiveError,
-          LimitExceededError, ClientVersionNotSupportedError,
-          WorkflowExecutionAlreadyCompletedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          LimitExceededError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
+          CadenceError;
 
   /**
    * ListOpenWorkflowExecutions is a visibility API to list the open executions in a specific
@@ -473,8 +602,12 @@ public interface IWorkflowService {
    */
   ListOpenWorkflowExecutionsResponse ListOpenWorkflowExecutions(
       ListOpenWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError, LimitExceededError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          LimitExceededError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ListClosedWorkflowExecutions is a visibility API to list the closed executions in a specific
@@ -484,8 +617,11 @@ public interface IWorkflowService {
    */
   ListClosedWorkflowExecutionsResponse ListClosedWorkflowExecutions(
       ListClosedWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ListWorkflowExecutions is a visibility API to list workflow executions in a specific domain.
@@ -493,8 +629,11 @@ public interface IWorkflowService {
    * @param listRequest
    */
   ListWorkflowExecutionsResponse ListWorkflowExecutions(ListWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ListArchivedWorkflowExecutions is a visibility API to list archived workflow executions in a
@@ -504,8 +643,11 @@ public interface IWorkflowService {
    */
   ListArchivedWorkflowExecutionsResponse ListArchivedWorkflowExecutions(
       ListArchivedWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ScanWorkflowExecutions is a visibility API to list large amount of workflow executions in a
@@ -514,8 +656,11 @@ public interface IWorkflowService {
    * @param listRequest
    */
   ListWorkflowExecutionsResponse ScanWorkflowExecutions(ListWorkflowExecutionsRequest listRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * CountWorkflowExecutions is a visibility API to count of workflow executions in a specific
@@ -525,8 +670,11 @@ public interface IWorkflowService {
    */
   CountWorkflowExecutionsResponse CountWorkflowExecutions(
       CountWorkflowExecutionsRequest countRequest)
-      throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * GetSearchAttributes is a visibility API to get all legal keys that could be used in list APIs
@@ -543,8 +691,13 @@ public interface IWorkflowService {
    * @param completeRequest
    */
   void RespondQueryTaskCompleted(RespondQueryTaskCompletedRequest completeRequest)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-          DomainNotActiveError, ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * Reset the sticky tasklist related information in mutable state of a given workflow. Things
@@ -554,9 +707,14 @@ public interface IWorkflowService {
    * @param resetRequest
    */
   ResetStickyTaskListResponse ResetStickyTaskList(ResetStickyTaskListRequest resetRequest)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-          DomainNotActiveError, ClientVersionNotSupportedError,
-          WorkflowExecutionAlreadyCompletedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          DomainNotActiveError,
+          ClientVersionNotSupportedError,
+          WorkflowExecutionAlreadyCompletedError,
+          CadenceError;
 
   /**
    * QueryWorkflow returns query result for a specified workflow execution
@@ -564,8 +722,13 @@ public interface IWorkflowService {
    * @param queryRequest
    */
   QueryWorkflowResponse QueryWorkflow(QueryWorkflowRequest queryRequest)
-      throws BadRequestError, EntityNotExistsError, QueryFailedError, LimitExceededError,
-          ServiceBusyError, ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          QueryFailedError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * DescribeWorkflowExecution returns information about the specified workflow execution.
@@ -574,8 +737,12 @@ public interface IWorkflowService {
    */
   DescribeWorkflowExecutionResponse DescribeWorkflowExecution(
       DescribeWorkflowExecutionRequest describeRequest)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * DescribeTaskList returns information about the target tasklist, right now this API returns the
@@ -584,8 +751,12 @@ public interface IWorkflowService {
    * @param request
    */
   DescribeTaskListResponse DescribeTaskList(DescribeTaskListRequest request)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /** GetClusterInfo returns information about cadence cluster */
   ClusterInfo GetClusterInfo() throws InternalServiceError, ServiceBusyError, CadenceError;
@@ -596,8 +767,12 @@ public interface IWorkflowService {
    * @param request
    */
   GetTaskListsByDomainResponse GetTaskListsByDomain(GetTaskListsByDomainRequest request)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-          ClientVersionNotSupportedError, CadenceError;
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
+          ClientVersionNotSupportedError,
+          CadenceError;
 
   /**
    * ReapplyEvents applies stale events to the current workflow and current run
@@ -605,7 +780,10 @@ public interface IWorkflowService {
    * @param request
    */
   ListTaskListPartitionsResponse ListTaskListPartitions(ListTaskListPartitionsRequest request)
-      throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
+      throws BadRequestError,
+          EntityNotExistsError,
+          LimitExceededError,
+          ServiceBusyError,
           CadenceError;
 
   /**
@@ -614,7 +792,10 @@ public interface IWorkflowService {
    * @param request
    */
   void RefreshWorkflowTasks(RefreshWorkflowTasksRequest request)
-      throws BadRequestError, DomainNotActiveError, ServiceBusyError, EntityNotExistsError,
+      throws BadRequestError,
+          DomainNotActiveError,
+          ServiceBusyError,
+          EntityNotExistsError,
           CadenceError;
 
   // Async methods

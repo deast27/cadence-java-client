@@ -326,7 +326,9 @@ class WorkflowThreadImpl implements WorkflowThread {
     this.blockedUntil = blockedUntil;
   }
 
-  /** @return true if coroutine made some progress. */
+  /**
+   * @return true if coroutine made some progress.
+   */
   @Override
   public boolean runUntilBlocked() {
     if (taskFuture == null) {
@@ -454,7 +456,9 @@ class WorkflowThreadImpl implements WorkflowThread {
     return Optional.of((T) threadLocalMap.get(key));
   }
 
-  /** @return stack trace of the coroutine thread */
+  /**
+   * @return stack trace of the coroutine thread
+   */
   @Override
   public String getStackTrace() {
     StackTraceElement[] st = task.getStackTrace();
@@ -481,7 +485,9 @@ class WorkflowThreadImpl implements WorkflowThread {
       return timedOut;
     }
 
-    /** @return true if condition matched or timed out */
+    /**
+     * @return true if condition matched or timed out
+     */
     @Override
     public Boolean get() {
       boolean result = unblockCondition.get();

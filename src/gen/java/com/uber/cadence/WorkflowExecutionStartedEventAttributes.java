@@ -33,6 +33,7 @@ public class WorkflowExecutionStartedEventAttributes {
   private SearchAttributes searchAttributes;
   private ResetPoints prevAutoResetPoints;
   private Header header;
-  private Map<String, String> partitionConfig = new HashMap<>();;
+  private Map<String, String> partitionConfig = new HashMap<>();
+  ;
   private String requestId;
 }

@@ -31,7 +31,9 @@ public interface ReplayWorkflow {
 
   boolean eventLoop() throws Throwable;
 
-  /** @return null means no output yet */
+  /**
+   * @return null means no output yet
+   */
   byte[] getOutput();
 
   void cancel(String reason);

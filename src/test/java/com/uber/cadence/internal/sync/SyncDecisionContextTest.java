@@ -34,7 +34,8 @@ import org.junit.Test;
 
 public class SyncDecisionContextTest {
   SyncDecisionContext context;
-  DecisionContext mockDecisionContext = mock(DecisionContext.class);;
+  DecisionContext mockDecisionContext = mock(DecisionContext.class);
+  ;
 
   @Before
   public void setUp() {

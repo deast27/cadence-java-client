@@ -21,6 +21,7 @@ import com.uber.cadence.serviceclient.WorkflowServiceGrpc;
 public final class TestEnvironment {
   public static final String DOMAIN = "UnitTest";
   public static final String DOMAIN2 = "UnitTest2";
+
   /**
    * When set to true increases test, activity and workflow timeouts to large values to support
    * stepping through code in a debugger without timing out.

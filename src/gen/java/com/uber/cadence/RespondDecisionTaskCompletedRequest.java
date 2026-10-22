@@ -8,12 +8,14 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class RespondDecisionTaskCompletedRequest {
   private byte[] taskToken;
-  private List<Decision> decisions = new ArrayList<>();;
+  private List<Decision> decisions = new ArrayList<>();
+  ;
   private byte[] executionContext;
   private String identity;
   private StickyExecutionAttributes stickyAttributes;
   private boolean returnNewDecisionTask;
   private boolean forceCreateNewDecisionTask;
   private String binaryChecksum;
-  private Map<String, WorkflowQueryResult> queryResults = new HashMap<>();;
+  private Map<String, WorkflowQueryResult> queryResults = new HashMap<>();
+  ;
 }

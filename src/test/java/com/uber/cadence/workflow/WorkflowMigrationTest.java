@@ -117,10 +117,9 @@ public class WorkflowMigrationTest {
 
   public interface CronWorkflow {
     @WorkflowMethod(
-      taskList = TASKLIST,
-      workflowIdReusePolicy = WorkflowIdReusePolicy.RejectDuplicate,
-      executionStartToCloseTimeoutSeconds = 10
-    )
+        taskList = TASKLIST,
+        workflowIdReusePolicy = WorkflowIdReusePolicy.RejectDuplicate,
+        executionStartToCloseTimeoutSeconds = 10)
     @CronSchedule("* * * * *")
     String execute(String testName);
   }
@@ -134,10 +133,9 @@ public class WorkflowMigrationTest {
 
   public interface ContinueAsNewWorkflow {
     @WorkflowMethod(
-      taskList = TASKLIST,
-      workflowIdReusePolicy = WorkflowIdReusePolicy.RejectDuplicate,
-      executionStartToCloseTimeoutSeconds = 10
-    )
+        taskList = TASKLIST,
+        workflowIdReusePolicy = WorkflowIdReusePolicy.RejectDuplicate,
+        executionStartToCloseTimeoutSeconds = 10)
     void execute(int iter);
   }
 

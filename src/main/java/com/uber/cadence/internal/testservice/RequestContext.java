@@ -204,7 +204,9 @@ final class RequestContext {
     commitCallbacks.add(callback);
   }
 
-  /** @return nextEventId */
+  /**
+   * @return nextEventId
+   */
   long commitChanges(TestWorkflowStore store)
       throws InternalServiceError, EntityNotExistsError, BadRequestError {
     return store.save(this);

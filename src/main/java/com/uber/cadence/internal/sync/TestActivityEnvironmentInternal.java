@@ -353,8 +353,11 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public RecordActivityTaskHeartbeatResponse RecordActivityTaskHeartbeat(
         RecordActivityTaskHeartbeatRequest heartbeatRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       if (activityHeartbetListener != null) {
         Object details =
             testEnvironmentOptions
@@ -372,76 +375,112 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public RecordActivityTaskHeartbeatResponse RecordActivityTaskHeartbeatByID(
         RecordActivityTaskHeartbeatByIDRequest heartbeatRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, DomainNotActiveError, LimitExceededError,
-            ServiceBusyError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            DomainNotActiveError,
+            LimitExceededError,
+            ServiceBusyError,
+            CadenceError {
       return impl.RecordActivityTaskHeartbeatByID(heartbeatRequest);
     }
 
     @Override
     public void RespondActivityTaskCompleted(RespondActivityTaskCompletedRequest completeRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondActivityTaskCompleted(completeRequest);
     }
 
     @Override
     public void RespondActivityTaskCompletedByID(
         RespondActivityTaskCompletedByIDRequest completeRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondActivityTaskCompletedByID(completeRequest);
     }
 
     @Override
     public void RespondActivityTaskFailed(RespondActivityTaskFailedRequest failRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondActivityTaskFailed(failRequest);
     }
 
     @Override
     public void RespondActivityTaskFailedByID(RespondActivityTaskFailedByIDRequest failRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondActivityTaskFailedByID(failRequest);
     }
 
     @Override
     public void RespondActivityTaskCanceled(RespondActivityTaskCanceledRequest canceledRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondActivityTaskCanceled(canceledRequest);
     }
 
     @Override
     public void RespondActivityTaskCanceledByID(
         RespondActivityTaskCanceledByIDRequest canceledRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondActivityTaskCanceledByID(canceledRequest);
     }
 
     @Override
     public void RequestCancelWorkflowExecution(RequestCancelWorkflowExecutionRequest cancelRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            CancellationAlreadyRequestedError, ServiceBusyError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            CancellationAlreadyRequestedError,
+            ServiceBusyError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RequestCancelWorkflowExecution(cancelRequest);
     }
 
     @Override
     public void SignalWorkflowExecution(SignalWorkflowExecutionRequest signalRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, ServiceBusyError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            ServiceBusyError,
+            CadenceError {
       impl.SignalWorkflowExecution(signalRequest);
     }
 
     @Override
     public StartWorkflowExecutionResponse SignalWithStartWorkflowExecution(
         SignalWithStartWorkflowExecutionRequest signalWithStartRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-            DomainNotActiveError, LimitExceededError, WorkflowExecutionAlreadyStartedError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
+            DomainNotActiveError,
+            LimitExceededError,
+            WorkflowExecutionAlreadyStartedError,
             CadenceError {
       return impl.SignalWithStartWorkflowExecution(signalWithStartRequest);
     }
@@ -449,31 +488,49 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public SignalWithStartWorkflowExecutionAsyncResponse SignalWithStartWorkflowExecutionAsync(
         SignalWithStartWorkflowExecutionAsyncRequest signalWithStartRequest)
-        throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-            DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            WorkflowExecutionAlreadyStartedError,
+            ServiceBusyError,
+            DomainNotActiveError,
+            LimitExceededError,
+            EntityNotExistsError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.SignalWithStartWorkflowExecutionAsync(signalWithStartRequest);
     }
 
     @Override
     public ResetWorkflowExecutionResponse ResetWorkflowExecution(
         ResetWorkflowExecutionRequest resetRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-            DomainNotActiveError, LimitExceededError, ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
+            DomainNotActiveError,
+            LimitExceededError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.ResetWorkflowExecution(resetRequest);
     }
 
     @Override
     public void TerminateWorkflowExecution(TerminateWorkflowExecutionRequest terminateRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, ServiceBusyError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            ServiceBusyError,
+            CadenceError {
       impl.TerminateWorkflowExecution(terminateRequest);
     }
 
     @Override
     public ListOpenWorkflowExecutionsResponse ListOpenWorkflowExecutions(
         ListOpenWorkflowExecutionsRequest listRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
             CadenceError {
       return impl.ListOpenWorkflowExecutions(listRequest);
     }
@@ -481,7 +538,10 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public ListClosedWorkflowExecutionsResponse ListClosedWorkflowExecutions(
         ListClosedWorkflowExecutionsRequest listRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
             CadenceError {
       return impl.ListClosedWorkflowExecutions(listRequest);
     }
@@ -489,59 +549,87 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public ListWorkflowExecutionsResponse ListWorkflowExecutions(
         ListWorkflowExecutionsRequest listRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.ListWorkflowExecutions(listRequest);
     }
 
     @Override
     public ListArchivedWorkflowExecutionsResponse ListArchivedWorkflowExecutions(
         ListArchivedWorkflowExecutionsRequest listRequest)
-        throws BadRequestError, EntityNotExistsError, ServiceBusyError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            EntityNotExistsError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.ListArchivedWorkflowExecutions(listRequest);
     }
 
     @Override
     public ListWorkflowExecutionsResponse ScanWorkflowExecutions(
         ListWorkflowExecutionsRequest listRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.ScanWorkflowExecutions(listRequest);
     }
 
     @Override
     public CountWorkflowExecutionsResponse CountWorkflowExecutions(
         CountWorkflowExecutionsRequest countRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.CountWorkflowExecutions(countRequest);
     }
 
     @Override
     public GetSearchAttributesResponse GetSearchAttributes()
-        throws InternalServiceError, ServiceBusyError, ClientVersionNotSupportedError,
+        throws InternalServiceError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
             CadenceError {
       return impl.GetSearchAttributes();
     }
 
     @Override
     public void RespondQueryTaskCompleted(RespondQueryTaskCompletedRequest completeRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondQueryTaskCompleted(completeRequest);
     }
 
     @Override
     public ResetStickyTaskListResponse ResetStickyTaskList(ResetStickyTaskListRequest resetRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, LimitExceededError,
-            ServiceBusyError, DomainNotActiveError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            LimitExceededError,
+            ServiceBusyError,
+            DomainNotActiveError,
+            CadenceError {
       return impl.ResetStickyTaskList(resetRequest);
     }
 
     @Override
     public QueryWorkflowResponse QueryWorkflow(QueryWorkflowRequest queryRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, QueryFailedError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            QueryFailedError,
             CadenceError {
       return impl.QueryWorkflow(queryRequest);
     }
@@ -568,14 +656,20 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public ListTaskListPartitionsResponse ListTaskListPartitions(
         ListTaskListPartitionsRequest request)
-        throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
+        throws BadRequestError,
+            EntityNotExistsError,
+            LimitExceededError,
+            ServiceBusyError,
             CadenceError {
       return impl.ListTaskListPartitions(request);
     }
 
     @Override
     public void RefreshWorkflowTasks(RefreshWorkflowTasksRequest request)
-        throws BadRequestError, DomainNotActiveError, ServiceBusyError, EntityNotExistsError,
+        throws BadRequestError,
+            DomainNotActiveError,
+            ServiceBusyError,
+            EntityNotExistsError,
             CadenceError {
       impl.RefreshWorkflowTasks(request);
     }
@@ -934,14 +1028,20 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public DiagnoseWorkflowExecutionResponse DiagnoseWorkflowExecution(
         DiagnoseWorkflowExecutionRequest diagnoseRequest)
-        throws DomainNotActiveError, ServiceBusyError, EntityNotExistsError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws DomainNotActiveError,
+            ServiceBusyError,
+            EntityNotExistsError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.DiagnoseWorkflowExecution(diagnoseRequest);
     }
 
     @Override
     public ListDomainsResponse ListDomains(ListDomainsRequest listRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
             CadenceError {
       return impl.ListDomains(listRequest);
     }
@@ -954,47 +1054,71 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
 
     @Override
     public void DeprecateDomain(DeprecateDomainRequest deprecateRequest)
-        throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            EntityNotExistsError,
+            LimitExceededError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       impl.DeprecateDomain(deprecateRequest);
     }
 
     @Override
     public RestartWorkflowExecutionResponse RestartWorkflowExecution(
         RestartWorkflowExecutionRequest restartRequest)
-        throws BadRequestError, ServiceBusyError, DomainNotActiveError, LimitExceededError,
-            EntityNotExistsError, ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            ServiceBusyError,
+            DomainNotActiveError,
+            LimitExceededError,
+            EntityNotExistsError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.RestartWorkflowExecution(restartRequest);
     }
 
     @Override
     public GetTaskListsByDomainResponse GetTaskListsByDomain(GetTaskListsByDomainRequest request)
-        throws BadRequestError, EntityNotExistsError, LimitExceededError, ServiceBusyError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            EntityNotExistsError,
+            LimitExceededError,
+            ServiceBusyError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.GetTaskListsByDomain(request);
     }
 
     @Override
     public StartWorkflowExecutionResponse StartWorkflowExecution(
         StartWorkflowExecutionRequest startRequest)
-        throws BadRequestError, InternalServiceError, WorkflowExecutionAlreadyStartedError,
-            ServiceBusyError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            WorkflowExecutionAlreadyStartedError,
+            ServiceBusyError,
+            CadenceError {
       return impl.StartWorkflowExecution(startRequest);
     }
 
     @Override
     public StartWorkflowExecutionAsyncResponse StartWorkflowExecutionAsync(
         StartWorkflowExecutionAsyncRequest startRequest)
-        throws BadRequestError, WorkflowExecutionAlreadyStartedError, ServiceBusyError,
-            DomainNotActiveError, LimitExceededError, EntityNotExistsError,
-            ClientVersionNotSupportedError, CadenceError {
+        throws BadRequestError,
+            WorkflowExecutionAlreadyStartedError,
+            ServiceBusyError,
+            DomainNotActiveError,
+            LimitExceededError,
+            EntityNotExistsError,
+            ClientVersionNotSupportedError,
+            CadenceError {
       return impl.StartWorkflowExecutionAsync(startRequest);
     }
 
     @Override
     public GetWorkflowExecutionHistoryResponse GetWorkflowExecutionHistory(
         GetWorkflowExecutionHistoryRequest getRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
             CadenceError {
       return impl.GetWorkflowExecutionHistory(getRequest);
     }
@@ -1002,7 +1126,10 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public GetWorkflowExecutionHistoryResponse GetWorkflowExecutionHistoryWithTimeout(
         GetWorkflowExecutionHistoryRequest getRequest, Long timeoutInMillis)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError, ServiceBusyError,
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            ServiceBusyError,
             CadenceError {
       return impl.GetWorkflowExecutionHistoryWithTimeout(getRequest, timeoutInMillis);
     }
@@ -1016,15 +1143,21 @@ public final class TestActivityEnvironmentInternal implements TestActivityEnviro
     @Override
     public RespondDecisionTaskCompletedResponse RespondDecisionTaskCompleted(
         RespondDecisionTaskCompletedRequest completeRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       return impl.RespondDecisionTaskCompleted(completeRequest);
     }
 
     @Override
     public void RespondDecisionTaskFailed(RespondDecisionTaskFailedRequest failedRequest)
-        throws BadRequestError, InternalServiceError, EntityNotExistsError,
-            WorkflowExecutionAlreadyCompletedError, CadenceError {
+        throws BadRequestError,
+            InternalServiceError,
+            EntityNotExistsError,
+            WorkflowExecutionAlreadyCompletedError,
+            CadenceError {
       impl.RespondDecisionTaskFailed(failedRequest);
     }
 

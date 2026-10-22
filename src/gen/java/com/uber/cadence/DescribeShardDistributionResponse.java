@@ -8,5 +8,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class DescribeShardDistributionResponse {
   private int numberOfShards;
-  private Map<Integer, String> shards = new HashMap<>();;
+  private Map<Integer, String> shards = new HashMap<>();
+  ;
 }

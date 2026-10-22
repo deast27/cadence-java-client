@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class DescribeTaskListResponse {
-  private List<PollerInfo> pollers = new ArrayList<>();;
+  private List<PollerInfo> pollers = new ArrayList<>();
+  ;
   private TaskListStatus taskListStatus;
 }

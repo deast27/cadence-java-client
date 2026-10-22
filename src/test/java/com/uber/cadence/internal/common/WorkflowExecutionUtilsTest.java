@@ -301,6 +301,7 @@ public class WorkflowExecutionUtilsTest {
     response.setNextPageToken(nextPageToken);
     return response;
   }
+
   // ===========================
   // Test for single-page history
   // ===========================

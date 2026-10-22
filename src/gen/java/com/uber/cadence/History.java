@@ -7,5 +7,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class History {
-  private List<HistoryEvent> events = new ArrayList<>();;
+  private List<HistoryEvent> events = new ArrayList<>();
+  ;
 }
